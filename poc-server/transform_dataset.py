@@ -3,7 +3,7 @@ Dataset Structure Transformer.
 
 Transforms generated evaluation dataset JSON files:
   1. Removes lm_checklist from every datapoint
-  2. Moves metadata from turns[0] up to the datapoint level
+  2. Keeps metadata inside each turn (with conversation_history removed)
   3. Expands conversation_history into separate turns (user->input, assistant->expected_output)
 
 Usage:
@@ -49,6 +49,7 @@ def transform_datapoint(dp: dict) -> dict:
                 "id": turn_id,
                 "role": "user",
                 "input": user_input,
+                "metadata": dict(metadata),
                 "expected_output": assistant_output,
             })
             turn_id += 1
@@ -59,12 +60,12 @@ def transform_datapoint(dp: dict) -> dict:
         "id": turn_id,
         "role": "user",
         "input": final_input,
+        "metadata": dict(metadata),
         "expected_output": final_expected,
     })
 
     return {
         "id": dp["id"],
-        "metadata": metadata,
         "turns": new_turns,
     }
 
