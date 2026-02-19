@@ -1,0 +1,34 @@
+2026-02-19 12:30:19 | INFO     | ======================================================================
+2026-02-19 12:30:19 | INFO     | Dataset Generation Started
+2026-02-19 12:30:19 | INFO     | ======================================================================
+2026-02-19 12:30:19 | INFO     | Eval type    : pii
+2026-02-19 12:30:19 | INFO     | Provider     : anthropic
+2026-02-19 12:30:19 | INFO     | Model        : claude-sonnet-4-5-20250929
+2026-02-19 12:30:19 | INFO     | Batch size   : 25
+2026-02-19 12:30:19 | INFO     | Total target : 100
+2026-02-19 12:30:19 | INFO     | Temperature  : 0.70
+2026-02-19 12:30:19 | INFO     | Loading generation prompt...
+2026-02-19 12:30:19 | INFO     | Prompt loaded (11252 chars)
+2026-02-19 12:30:19 | INFO     | Provider initialized: anthropic (model=claude-sonnet-4-5-20250929)
+2026-02-19 12:30:19 | INFO     | Batch 1: Generating datapoints 1-25
+2026-02-19 12:32:33 | INFO     | Batch 1: LLM responded in 133.4s (36481 chars)
+2026-02-19 12:32:33 | INFO     | Batch 1: 25 valid, 0 invalid out of 25 extracted
+2026-02-19 12:32:33 | INFO     | Pausing 2s between batches...
+2026-02-19 12:32:35 | INFO     | Batch 2: Generating datapoints 26-50
+2026-02-19 12:34:32 | INFO     | Batch 2: LLM responded in 117.0s (33181 chars)
+2026-02-19 12:34:32 | INFO     | Batch 2: 25 valid, 0 invalid out of 25 extracted
+2026-02-19 12:34:32 | INFO     | Pausing 2s between batches...
+2026-02-19 12:34:34 | INFO     | Batch 3: Generating datapoints 51-75
+2026-02-19 12:36:36 | INFO     | Batch 3: LLM responded in 122.5s (35736 chars)
+2026-02-19 12:36:36 | INFO     | Batch 3: 25 valid, 0 invalid out of 25 extracted
+2026-02-19 12:36:36 | INFO     | Pausing 2s between batches...
+2026-02-19 12:36:38 | INFO     | Batch 4: Generating datapoints 76-100
+2026-02-19 12:39:21 | INFO     | Batch 4: LLM responded in 163.0s (42732 chars)
+2026-02-19 12:39:21 | INFO     | Batch 4: 25 valid, 0 invalid out of 25 extracted
+2026-02-19 12:39:21 | INFO     | ======================================================================
+2026-02-19 12:39:21 | INFO     | Generation Complete
+2026-02-19 12:39:21 | INFO     | ======================================================================
+2026-02-19 12:39:21 | INFO     | Total datapoints generated : 100
+2026-02-19 12:39:21 | INFO     | Target was                 : 100
+2026-02-19 12:39:21 | INFO     | Output file                : D:\Work\turing\EvalServices\poc-server\output\pii-dataset.json
+2026-02-19 12:39:21 | INFO     | ======================================================================

@@ -1,0 +1,35 @@
+2026-02-19 13:51:13 | INFO     | ======================================================================
+2026-02-19 13:51:13 | INFO     | Dataset Generation Started
+2026-02-19 13:51:13 | INFO     | ======================================================================
+2026-02-19 13:51:13 | INFO     | Eval type    : jailbreak
+2026-02-19 13:51:13 | INFO     | Provider     : anthropic
+2026-02-19 13:51:13 | INFO     | Model        : claude-opus-4-5-20251101
+2026-02-19 13:51:13 | INFO     | Batch size   : 25
+2026-02-19 13:51:13 | INFO     | Total target : 100
+2026-02-19 13:51:13 | INFO     | Temperature  : 0.70
+2026-02-19 13:51:13 | INFO     | Loading generation prompt...
+2026-02-19 13:51:13 | INFO     | Prompt loaded (10671 chars)
+2026-02-19 13:51:13 | INFO     | Provider initialized: anthropic (model=claude-opus-4-5-20251101)
+2026-02-19 13:51:13 | INFO     | Batch 1: Generating datapoints 1-25
+2026-02-19 13:51:54 | INFO     | Batch 1: LLM responded in 40.6s (10347 chars)
+2026-02-19 13:51:54 | INFO     | Batch 1: 6 valid, 48 invalid out of 54 extracted
+2026-02-19 13:51:54 | INFO     | Pausing 2s between batches...
+2026-02-19 13:51:56 | INFO     | Batch 2: Generating datapoints 26-50
+2026-02-19 13:52:14 | INFO     | Batch 2: LLM responded in 17.8s (3803 chars)
+2026-02-19 13:52:14 | INFO     | Batch 2: 2 valid, 16 invalid out of 18 extracted
+2026-02-19 13:52:14 | INFO     | Pausing 2s between batches...
+2026-02-19 13:52:16 | INFO     | Batch 3: Generating datapoints 51-75
+2026-02-19 13:53:02 | INFO     | Batch 3: LLM responded in 46.1s (10490 chars)
+2026-02-19 13:53:02 | INFO     | Batch 3: 5 valid, 40 invalid out of 45 extracted
+2026-02-19 13:53:02 | INFO     | Pausing 2s between batches...
+2026-02-19 13:53:04 | INFO     | Batch 4: Generating datapoints 76-100
+2026-02-19 13:53:46 | INFO     | Batch 4: LLM responded in 41.9s (9845 chars)
+2026-02-19 13:53:46 | INFO     | Batch 4: 5 valid, 40 invalid out of 45 extracted
+2026-02-19 13:53:46 | INFO     | ======================================================================
+2026-02-19 13:53:46 | INFO     | Generation Complete
+2026-02-19 13:53:46 | INFO     | ======================================================================
+2026-02-19 13:53:46 | INFO     | Total datapoints generated : 18
+2026-02-19 13:53:46 | INFO     | Target was                 : 100
+2026-02-19 13:53:46 | INFO     | Output file                : D:\Work\turing\EvalServices\poc-server\output\jailbreak-dataset.json
+2026-02-19 13:53:46 | INFO     | ======================================================================
+2026-02-19 13:53:46 | WARNING  | Generated 18/100 datapoints. Some batches may have failed or returned invalid JSON. Check the debug log for details. You can re-run to generate more.

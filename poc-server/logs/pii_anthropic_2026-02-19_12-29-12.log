@@ -1,0 +1,13 @@
+2026-02-19 12:29:12 | INFO     | ======================================================================
+2026-02-19 12:29:12 | INFO     | Dataset Generation Started
+2026-02-19 12:29:12 | INFO     | ======================================================================
+2026-02-19 12:29:12 | INFO     | Eval type    : pii
+2026-02-19 12:29:12 | INFO     | Provider     : anthropic
+2026-02-19 12:29:12 | INFO     | Model        : claude-sonnet-4-20250514
+2026-02-19 12:29:12 | INFO     | Batch size   : 25
+2026-02-19 12:29:12 | INFO     | Total target : 100
+2026-02-19 12:29:12 | INFO     | Temperature  : 0.70
+2026-02-19 12:29:12 | INFO     | Loading generation prompt...
+2026-02-19 12:29:12 | INFO     | Prompt loaded (11252 chars)
+2026-02-19 12:29:12 | INFO     | Provider initialized: anthropic (model=claude-sonnet-4-20250514)
+2026-02-19 12:29:12 | INFO     | Batch 1: Generating datapoints 1-25
