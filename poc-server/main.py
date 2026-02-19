@@ -7,6 +7,8 @@ during evaluations instead of using PromptStore prompt mode.
 """
 
 import os
+import json
+import logging
 from typing import Optional
 
 import anthropic
@@ -16,6 +18,13 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 load_dotenv()
+
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
+LOG_CHAT_REQUEST_BODY = os.getenv("LOG_CHAT_REQUEST_BODY", "true").strip().lower() in {"1", "true", "yes", "y"}
+MAX_LOG_CHARS = int(os.getenv("MAX_LOG_CHARS", "8000"))
+
+logging.basicConfig(level=LOG_LEVEL, format="%(asctime)s %(levelname)s %(message)s")
+logger = logging.getLogger("poc-server")
 
 app = FastAPI(
     title="RAI Eval POC — HR Assistant",
@@ -87,6 +96,19 @@ class ChatResponse(BaseModel):
     response: str
     model: str
     agent_id: str
+
+
+# ---------------------------------------------------------------------------
+# Logging helpers
+# ---------------------------------------------------------------------------
+
+
+def _truncate_for_logs(s: str, max_chars: int) -> str:
+    if max_chars <= 0:
+        return ""
+    if len(s) <= max_chars:
+        return s
+    return s[: max_chars - 15] + "...[truncated]"
 
 
 # ---------------------------------------------------------------------------
@@ -199,6 +221,21 @@ def chat(req: ChatRequest):
     The server prepends the agent's system prompt, forwards to the LLM,
     and returns the response. This is the endpoint the eval platform calls.
     """
+    if LOG_CHAT_REQUEST_BODY:
+        try:
+            body = req.model_dump()
+            body_str = json.dumps(body, ensure_ascii=False)
+            logger.info("POST /chat body=%s", _truncate_for_logs(body_str, MAX_LOG_CHARS))
+        except Exception:
+            logger.exception("Failed to log POST /chat request body")
+    else:
+        logger.info(
+            "POST /chat agent_id=%s model=%s message_count=%s",
+            req.agent_id,
+            req.model,
+            len(req.messages),
+        )
+
     if req.agent_id not in SYSTEM_PROMPTS:
         raise HTTPException(status_code=404, detail=f"Agent '{req.agent_id}' not found")
 
