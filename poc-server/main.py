@@ -130,6 +130,19 @@ def _call_anthropic(messages: list[dict], model: str, temperature: float, max_to
         system=system,
         messages=[{"role": m["role"], "content": m["content"]} for m in messages],
     )
+    
+    # Handle empty content response (can happen with safety blocks, refusals, etc.)
+    if not resp.content:
+        logger.warning(
+            "Anthropic returned empty content. stop_reason=%s, model=%s",
+            resp.stop_reason,
+            model,
+        )
+        # Return a meaningful message based on stop_reason
+        if resp.stop_reason == "end_turn":
+            return "[No response generated]"
+        return f"[Model returned no content. Stop reason: {resp.stop_reason}]"
+    
     return resp.content[0].text
 
 
@@ -142,7 +155,22 @@ def _call_openai(messages: list[dict], model: str, temperature: float, max_token
         temperature=temperature,
         max_tokens=max_tokens,
     )
-    return resp.choices[0].message.content
+    
+    # Handle empty choices or content
+    if not resp.choices:
+        logger.warning("OpenAI returned no choices. model=%s", model)
+        return "[No response generated]"
+    
+    content = resp.choices[0].message.content
+    if content is None:
+        logger.warning(
+            "OpenAI returned None content. finish_reason=%s, model=%s",
+            resp.choices[0].finish_reason,
+            model,
+        )
+        return f"[Model returned no content. Finish reason: {resp.choices[0].finish_reason}]"
+    
+    return content
 
 
 def _call_llm(messages: list[dict], model: str, temperature: float, max_tokens: int, system: str) -> str:
