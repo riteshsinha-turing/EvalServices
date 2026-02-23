@@ -14,7 +14,8 @@ from typing import Optional
 import anthropic
 import openai
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 load_dotenv()
@@ -31,6 +32,19 @@ app = FastAPI(
     description="GlobalTech Corp HR Assistant agent for safety evaluations",
     version="1.0.0",
 )
+
+
+@app.exception_handler(Exception)
+def _generic_exception_handler(_request: Request, exc: Exception) -> JSONResponse:
+    """Return a safe, generic error for any unhandled exception (no sensitive leak)."""
+    if isinstance(exc, HTTPException):
+        # Preserve intended status code and detail (e.g. 503 from LLM failure)
+        return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
+    logger.exception("Unhandled exception: %s", type(exc).__name__)
+    return JSONResponse(
+        status_code=500,
+        content={"detail": MSG_SERVICE_ERROR},
+    )
 
 # ---------------------------------------------------------------------------
 # System Prompts
@@ -99,6 +113,14 @@ class ChatResponse(BaseModel):
 
 
 # ---------------------------------------------------------------------------
+# Safe error messages (never leak internal details to the client)
+# ---------------------------------------------------------------------------
+
+MSG_RESPONSE_UNAVAILABLE = "[Response unavailable. Please try again later.]"
+MSG_SERVICE_ERROR = "The service encountered an error. Please try again later."
+
+
+# ---------------------------------------------------------------------------
 # Logging helpers
 # ---------------------------------------------------------------------------
 
@@ -138,11 +160,8 @@ def _call_anthropic(messages: list[dict], model: str, temperature: float, max_to
             resp.stop_reason,
             model,
         )
-        # Return a meaningful message based on stop_reason
-        if resp.stop_reason == "end_turn":
-            return "[No response generated]"
-        return f"[Model returned no content. Stop reason: {resp.stop_reason}]"
-    
+        return MSG_RESPONSE_UNAVAILABLE
+
     return resp.content[0].text
 
 
@@ -159,8 +178,8 @@ def _call_openai(messages: list[dict], model: str, temperature: float, max_token
     # Handle empty choices or content
     if not resp.choices:
         logger.warning("OpenAI returned no choices. model=%s", model)
-        return "[No response generated]"
-    
+        return MSG_RESPONSE_UNAVAILABLE
+
     content = resp.choices[0].message.content
     if content is None:
         logger.warning(
@@ -168,8 +187,8 @@ def _call_openai(messages: list[dict], model: str, temperature: float, max_token
             resp.choices[0].finish_reason,
             model,
         )
-        return f"[Model returned no content. Finish reason: {resp.choices[0].finish_reason}]"
-    
+        return MSG_RESPONSE_UNAVAILABLE
+
     return content
 
 
@@ -273,13 +292,18 @@ def chat(req: ChatRequest):
     # Strip any system messages from input — we control the system prompt
     messages = [{"role": m.role, "content": m.content} for m in req.messages if m.role != "system"]
 
-    response_text = _call_llm(
-        messages=messages,
-        model=model,
-        temperature=req.temperature,
-        max_tokens=req.max_tokens,
-        system=system_prompt,
-    )
+    try:
+        response_text = _call_llm(
+            messages=messages,
+            model=model,
+            temperature=req.temperature,
+            max_tokens=req.max_tokens,
+            system=system_prompt,
+        )
+    except Exception as e:
+        # Log full error server-side only; never expose to client
+        logger.exception("LLM call failed: %s", type(e).__name__)
+        raise HTTPException(status_code=503, detail=MSG_SERVICE_ERROR)
 
     return ChatResponse(response=response_text, model=model, agent_id=req.agent_id)
 
