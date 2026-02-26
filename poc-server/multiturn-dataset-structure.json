@@ -1,0 +1,99 @@
+[
+  {
+    "id": 1,
+    "turns": [
+      {
+        "id": 1,
+        "role": "user",
+        "input": "What is Bavencio and what cancers is it approved to treat?",
+        "expected_output": "Bavencio (avelumab) is a PD-L1 blocking antibody approved for metastatic Merkel cell carcinoma (MCC), locally advanced or metastatic urothelial carcinoma, and advanced renal cell carcinoma in combination with axitinib."
+      },
+      {
+        "id": 2,
+        "role": "user",
+        "input": "What are the most common infusion-related reactions with Bavencio?",
+        "expected_output": "Common infusion-related reactions include fever, chills, flushing, hypotension, dyspnea, and back pain. Pre-medication with acetaminophen and antihistamine is recommended for the first 4 infusions."
+      },
+      {
+        "id": 3,
+        "role": "user",
+        "input": "How should patients be monitored for immune-related adverse events?",
+        "expected_output": "Patients should be monitored for signs of pneumonitis, hepatitis, colitis, thyroid disorders, and adrenal insufficiency. Liver function, thyroid function, and renal function tests should be performed at baseline and periodically during treatment."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "turns": [
+      {
+        "id": 1,
+        "role": "user",
+        "input": "What is Erbitux used for in cancer treatment?",
+        "expected_output": "Erbitux (cetuximab) is an EGFR inhibitor used for metastatic colorectal cancer with wild-type RAS, squamous cell carcinoma of the head and neck, and certain locally advanced head and neck cancers in combination with radiation."
+      },
+      {
+        "id": 2,
+        "role": "user",
+        "input": "What biomarker testing is required before prescribing Erbitux for colorectal cancer?",
+        "expected_output": "RAS mutation testing (including KRAS and NRAS) is required. Erbitux is only indicated for patients with wild-type RAS tumors. Extended RAS testing covering exons 2, 3, and 4 of both KRAS and NRAS is recommended."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "turns": [
+      {
+        "id": 1,
+        "role": "user",
+        "input": "What is Gonal-f and what is it used for in fertility treatment?",
+        "expected_output": "Gonal-f (follitropin alfa) is a recombinant follicle-stimulating hormone (FSH) used to stimulate follicular development in women undergoing assisted reproductive technologies (ART) and for ovulation induction in anovulatory women."
+      },
+      {
+        "id": 2,
+        "role": "user",
+        "input": "What monitoring is required during Gonal-f treatment?",
+        "expected_output": "Monitoring includes transvaginal ultrasound to assess follicular development and serum estradiol levels. The starting dose is typically 75-150 IU daily, adjusted based on ovarian response. Treatment should be individualized to minimize ovarian hyperstimulation risk."
+      },
+      {
+        "id": 3,
+        "role": "user",
+        "input": "What are the warning signs of ovarian hyperstimulation syndrome?",
+        "expected_output": "Warning signs include abdominal pain and distension, nausea, vomiting, diarrhea, weight gain, and decreased urine output. Severe cases may present with breathing difficulties, blood clots, and fluid accumulation in the abdomen or chest."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "turns": [
+      {
+        "id": 1,
+        "role": "user",
+        "input": "What is Mavenclad and what condition does it treat?",
+        "expected_output": "Mavenclad (cladribine) is an oral disease-modifying therapy for relapsing forms of multiple sclerosis (MS), including relapsing-remitting MS and active secondary progressive MS. It works by selectively reducing B and T lymphocytes involved in the MS disease process."
+      },
+      {
+        "id": 2,
+        "role": "user",
+        "input": "What is the dosing schedule for Mavenclad?",
+        "expected_output": "Mavenclad is dosed in 2 yearly treatment courses. Each course consists of 2 treatment weeks, one at the start of month 1 and one at the start of month 2. The cumulative dose is 3.5 mg/kg body weight over 2 years."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "turns": [
+      {
+        "id": 1,
+        "role": "user",
+        "input": "Can Bavencio be used in combination with other cancer treatments?",
+        "expected_output": "Yes, Bavencio is approved in combination with axitinib as first-line treatment for advanced renal cell carcinoma. The combination has shown improved progression-free survival compared to sunitinib monotherapy."
+      },
+      {
+        "id": 2,
+        "role": "user",
+        "input": "What are the contraindications for this combination therapy?",
+        "expected_output": "There are no absolute contraindications, but caution is advised in patients with active autoimmune disease, organ transplant recipients on immunosuppressants, and patients with severe hepatic impairment. Prior immune-related adverse events may require careful assessment.",
+      }
+    ]
+  }
+]

@@ -1,0 +1,102 @@
+2026-02-20 10:51:53 | INFO     | ======================================================================
+2026-02-20 10:51:53 | INFO     | Dataset Generation Started
+2026-02-20 10:51:53 | INFO     | ======================================================================
+2026-02-20 10:51:53 | INFO     | Eval type    : jailbreak
+2026-02-20 10:51:53 | INFO     | Provider     : anthropic
+2026-02-20 10:51:53 | INFO     | Model        : claude-opus-4-5-20251101
+2026-02-20 10:51:53 | INFO     | Batch size   : 5
+2026-02-20 10:51:53 | INFO     | Total target : 100
+2026-02-20 10:51:53 | INFO     | Temperature  : 0.70
+2026-02-20 10:51:53 | INFO     | Loading generation prompt...
+2026-02-20 10:51:53 | INFO     | Prompt loaded (10671 chars)
+2026-02-20 10:51:53 | INFO     | Provider initialized: anthropic (model=claude-opus-4-5-20251101)
+2026-02-20 10:51:53 | INFO     | Batch 1: Generating datapoints 1-5
+2026-02-20 10:52:24 | INFO     | Batch 1: LLM responded in 30.3s (5589 chars)
+2026-02-20 10:52:24 | INFO     | Batch 1: 2 valid, 16 invalid out of 18 extracted
+2026-02-20 10:52:24 | INFO     | Pausing 2s between batches...
+2026-02-20 10:52:26 | INFO     | Batch 2: Generating datapoints 6-10
+2026-02-20 10:52:50 | INFO     | Batch 2: LLM responded in 24.6s (5421 chars)
+2026-02-20 10:52:50 | INFO     | Batch 2: 3 valid, 24 invalid out of 27 extracted
+2026-02-20 10:52:50 | INFO     | Pausing 2s between batches...
+2026-02-20 10:52:52 | INFO     | Batch 3: Generating datapoints 11-15
+2026-02-20 10:53:43 | INFO     | Batch 3: LLM responded in 51.1s (11730 chars)
+2026-02-20 10:53:43 | INFO     | Batch 3: 5 valid, 0 invalid out of 5 extracted
+2026-02-20 10:53:43 | INFO     | Pausing 2s between batches...
+2026-02-20 10:53:45 | INFO     | Batch 4: Generating datapoints 16-20
+2026-02-20 10:54:34 | INFO     | Batch 4: LLM responded in 48.9s (11766 chars)
+2026-02-20 10:54:34 | INFO     | Batch 4: 5 valid, 0 invalid out of 5 extracted
+2026-02-20 10:54:34 | INFO     | Pausing 2s between batches...
+2026-02-20 10:54:36 | INFO     | Batch 5: Generating datapoints 21-25
+2026-02-20 10:55:19 | INFO     | Batch 5: LLM responded in 42.6s (9473 chars)
+2026-02-20 10:55:19 | INFO     | Batch 5: 4 valid, 39 invalid out of 43 extracted
+2026-02-20 10:55:19 | INFO     | Pausing 2s between batches...
+2026-02-20 10:55:21 | INFO     | Batch 6: Generating datapoints 26-30
+2026-02-20 10:55:37 | INFO     | Batch 6: LLM responded in 16.1s (2362 chars)
+2026-02-20 10:55:37 | INFO     | Batch 6: 1 valid, 8 invalid out of 9 extracted
+2026-02-20 10:55:37 | INFO     | Pausing 2s between batches...
+2026-02-20 10:55:39 | INFO     | Batch 7: Generating datapoints 31-35
+2026-02-20 10:55:46 | INFO     | Batch 7: LLM responded in 7.0s (413 chars)
+2026-02-20 10:55:46 | WARNING  | Failed to extract any valid JSON from response
+2026-02-20 10:55:46 | ERROR    | Batch 7: Failed to extract JSON from response
+2026-02-20 10:55:46 | INFO     | Pausing 2s between batches...
+2026-02-20 10:55:48 | INFO     | Batch 8: Generating datapoints 36-40
+2026-02-20 10:56:29 | INFO     | Batch 8: LLM responded in 41.4s (11075 chars)
+2026-02-20 10:56:29 | INFO     | Batch 8: 5 valid, 0 invalid out of 5 extracted
+2026-02-20 10:56:29 | INFO     | Pausing 2s between batches...
+2026-02-20 10:56:31 | INFO     | Batch 9: Generating datapoints 41-45
+2026-02-20 10:57:32 | INFO     | Batch 9: LLM responded in 60.8s (14283 chars)
+2026-02-20 10:57:32 | INFO     | Batch 9: 5 valid, 0 invalid out of 5 extracted
+2026-02-20 10:57:32 | INFO     | Pausing 2s between batches...
+2026-02-20 10:57:34 | INFO     | Batch 10: Generating datapoints 46-50
+2026-02-20 10:58:07 | INFO     | Batch 10: LLM responded in 32.5s (6311 chars)
+2026-02-20 10:58:07 | INFO     | Batch 10: 2 valid, 23 invalid out of 25 extracted
+2026-02-20 10:58:07 | INFO     | Pausing 2s between batches...
+2026-02-20 10:58:09 | INFO     | Batch 11: Generating datapoints 51-55
+2026-02-20 10:59:01 | INFO     | Batch 11: LLM responded in 52.5s (11528 chars)
+2026-02-20 10:59:01 | INFO     | Batch 11: 5 valid, 0 invalid out of 5 extracted
+2026-02-20 10:59:01 | INFO     | Pausing 2s between batches...
+2026-02-20 10:59:03 | INFO     | Batch 12: Generating datapoints 56-60
+2026-02-20 10:59:08 | INFO     | Batch 12: LLM responded in 4.5s (441 chars)
+2026-02-20 10:59:08 | WARNING  | Failed to extract any valid JSON from response
+2026-02-20 10:59:08 | ERROR    | Batch 12: Failed to extract JSON from response
+2026-02-20 10:59:08 | INFO     | Pausing 2s between batches...
+2026-02-20 10:59:10 | INFO     | Batch 13: Generating datapoints 61-65
+2026-02-20 11:00:04 | INFO     | Batch 13: LLM responded in 54.4s (13440 chars)
+2026-02-20 11:00:04 | INFO     | Batch 13: 4 valid, 54 invalid out of 58 extracted
+2026-02-20 11:00:04 | INFO     | Pausing 2s between batches...
+2026-02-20 11:00:06 | INFO     | Batch 14: Generating datapoints 66-70
+2026-02-20 11:01:41 | INFO     | Batch 14: LLM responded in 94.8s (13751 chars)
+2026-02-20 11:01:41 | INFO     | Batch 14: 4 valid, 46 invalid out of 50 extracted
+2026-02-20 11:01:41 | INFO     | Pausing 2s between batches...
+2026-02-20 11:01:43 | INFO     | Batch 15: Generating datapoints 71-75
+2026-02-20 11:01:48 | INFO     | Batch 15: LLM responded in 5.4s (456 chars)
+2026-02-20 11:01:48 | WARNING  | Failed to extract any valid JSON from response
+2026-02-20 11:01:48 | ERROR    | Batch 15: Failed to extract JSON from response
+2026-02-20 11:01:48 | INFO     | Pausing 2s between batches...
+2026-02-20 11:01:50 | INFO     | Batch 16: Generating datapoints 76-80
+2026-02-20 11:02:17 | INFO     | Batch 16: LLM responded in 26.8s (5495 chars)
+2026-02-20 11:02:17 | INFO     | Batch 16: 1 valid, 16 invalid out of 17 extracted
+2026-02-20 11:02:17 | INFO     | Pausing 2s between batches...
+2026-02-20 11:02:19 | INFO     | Batch 17: Generating datapoints 81-85
+2026-02-20 11:02:48 | INFO     | Batch 17: LLM responded in 28.7s (6291 chars)
+2026-02-20 11:02:48 | INFO     | Batch 17: 3 valid, 24 invalid out of 27 extracted
+2026-02-20 11:02:48 | INFO     | Pausing 2s between batches...
+2026-02-20 11:02:50 | INFO     | Batch 18: Generating datapoints 86-90
+2026-02-20 11:03:24 | INFO     | Batch 18: LLM responded in 34.5s (7087 chars)
+2026-02-20 11:03:24 | INFO     | Batch 18: 2 valid, 22 invalid out of 24 extracted
+2026-02-20 11:03:24 | INFO     | Pausing 2s between batches...
+2026-02-20 11:03:26 | INFO     | Batch 19: Generating datapoints 91-95
+2026-02-20 11:04:13 | INFO     | Batch 19: LLM responded in 46.2s (10060 chars)
+2026-02-20 11:04:13 | INFO     | Batch 19: 5 valid, 0 invalid out of 5 extracted
+2026-02-20 11:04:13 | INFO     | Pausing 2s between batches...
+2026-02-20 11:04:15 | INFO     | Batch 20: Generating datapoints 96-100
+2026-02-20 11:05:43 | INFO     | Batch 20: LLM responded in 88.6s (19604 chars)
+2026-02-20 11:05:43 | INFO     | Batch 20: 5 valid, 0 invalid out of 5 extracted
+2026-02-20 11:05:43 | INFO     | ======================================================================
+2026-02-20 11:05:43 | INFO     | Generation Complete
+2026-02-20 11:05:43 | INFO     | ======================================================================
+2026-02-20 11:05:43 | INFO     | Total datapoints generated : 61
+2026-02-20 11:05:43 | INFO     | Target was                 : 100
+2026-02-20 11:05:43 | INFO     | Output file                : D:\Work\turing\EvalServices\poc-server\output\jailbreak-dataset_v2.json
+2026-02-20 11:05:43 | INFO     | ======================================================================
+2026-02-20 11:05:43 | WARNING  | Generated 61/100 datapoints. Some batches may have failed or returned invalid JSON. Check the debug log for details. You can re-run to generate more.

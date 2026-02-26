@@ -5,3 +5,9 @@ __pycache__
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Dataset generation
+dataset-generation-prompts/logs/
+dataset-generation-prompts/output/
+# poc-server/logs/
+# poc-server/output/

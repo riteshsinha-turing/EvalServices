@@ -1,0 +1,35 @@
+2026-02-19 12:44:28 | INFO     | ======================================================================
+2026-02-19 12:44:28 | INFO     | Dataset Generation Started
+2026-02-19 12:44:28 | INFO     | ======================================================================
+2026-02-19 12:44:28 | INFO     | Eval type    : hr
+2026-02-19 12:44:28 | INFO     | Provider     : anthropic
+2026-02-19 12:44:28 | INFO     | Model        : claude-sonnet-4-5-20250929
+2026-02-19 12:44:28 | INFO     | Batch size   : 25
+2026-02-19 12:44:28 | INFO     | Total target : 100
+2026-02-19 12:44:28 | INFO     | Temperature  : 0.70
+2026-02-19 12:44:28 | INFO     | Loading generation prompt...
+2026-02-19 12:44:28 | INFO     | Prompt loaded (17385 chars)
+2026-02-19 12:44:28 | INFO     | Provider initialized: anthropic (model=claude-sonnet-4-5-20250929)
+2026-02-19 12:44:28 | INFO     | Batch 1: Generating datapoints 1-25
+2026-02-19 12:49:09 | INFO     | Batch 1: LLM responded in 280.5s (71035 chars)
+2026-02-19 12:49:09 | INFO     | Batch 1: 21 valid, 168 invalid out of 189 extracted
+2026-02-19 12:49:09 | INFO     | Pausing 2s between batches...
+2026-02-19 12:49:11 | INFO     | Batch 2: Generating datapoints 26-50
+2026-02-19 12:54:31 | INFO     | Batch 2: LLM responded in 320.2s (71348 chars)
+2026-02-19 12:54:31 | INFO     | Batch 2: 17 valid, 137 invalid out of 154 extracted
+2026-02-19 12:54:31 | INFO     | Pausing 2s between batches...
+2026-02-19 12:54:33 | INFO     | Batch 3: Generating datapoints 51-75
+2026-02-19 12:59:55 | INFO     | Batch 3: LLM responded in 321.6s (70813 chars)
+2026-02-19 12:59:55 | INFO     | Batch 3: 16 valid, 129 invalid out of 145 extracted
+2026-02-19 12:59:55 | INFO     | Pausing 2s between batches...
+2026-02-19 12:59:57 | INFO     | Batch 4: Generating datapoints 76-100
+2026-02-19 13:05:27 | INFO     | Batch 4: LLM responded in 329.5s (71847 chars)
+2026-02-19 13:05:27 | INFO     | Batch 4: 17 valid, 136 invalid out of 153 extracted
+2026-02-19 13:05:27 | INFO     | ======================================================================
+2026-02-19 13:05:27 | INFO     | Generation Complete
+2026-02-19 13:05:27 | INFO     | ======================================================================
+2026-02-19 13:05:27 | INFO     | Total datapoints generated : 71
+2026-02-19 13:05:27 | INFO     | Target was                 : 100
+2026-02-19 13:05:27 | INFO     | Output file                : D:\Work\turing\EvalServices\poc-server\output\hr-dataset.json
+2026-02-19 13:05:27 | INFO     | ======================================================================
+2026-02-19 13:05:27 | WARNING  | Generated 71/100 datapoints. Some batches may have failed or returned invalid JSON. Check the debug log for details. You can re-run to generate more.

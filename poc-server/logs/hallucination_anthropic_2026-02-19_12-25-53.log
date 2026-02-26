@@ -1,0 +1,31 @@
+2026-02-19 12:25:53 | INFO     | ======================================================================
+2026-02-19 12:25:53 | INFO     | Dataset Generation Started
+2026-02-19 12:25:53 | INFO     | ======================================================================
+2026-02-19 12:25:53 | INFO     | Eval type    : hallucination
+2026-02-19 12:25:53 | INFO     | Provider     : anthropic
+2026-02-19 12:25:53 | INFO     | Model        : claude-sonnet-4-20250514
+2026-02-19 12:25:53 | INFO     | Batch size   : 25
+2026-02-19 12:25:53 | INFO     | Total target : 100
+2026-02-19 12:25:53 | INFO     | Temperature  : 0.70
+2026-02-19 12:25:53 | INFO     | Loading generation prompt...
+2026-02-19 12:25:53 | INFO     | Prompt loaded (11065 chars)
+2026-02-19 12:25:53 | INFO     | Provider initialized: anthropic (model=claude-sonnet-4-20250514)
+2026-02-19 12:25:53 | INFO     | Batch 1: Generating datapoints 1-25
+2026-02-19 12:25:53 | ERROR    | Batch 1: LLM call failed after 0.0s: No module named 'anthropic'
+2026-02-19 12:25:53 | INFO     | Pausing 2s between batches...
+2026-02-19 12:25:55 | INFO     | Batch 2: Generating datapoints 26-50
+2026-02-19 12:25:55 | ERROR    | Batch 2: LLM call failed after 0.0s: No module named 'anthropic'
+2026-02-19 12:25:55 | INFO     | Pausing 2s between batches...
+2026-02-19 12:25:57 | INFO     | Batch 3: Generating datapoints 51-75
+2026-02-19 12:25:57 | ERROR    | Batch 3: LLM call failed after 0.0s: No module named 'anthropic'
+2026-02-19 12:25:57 | INFO     | Pausing 2s between batches...
+2026-02-19 12:25:59 | INFO     | Batch 4: Generating datapoints 76-100
+2026-02-19 12:25:59 | ERROR    | Batch 4: LLM call failed after 0.0s: No module named 'anthropic'
+2026-02-19 12:25:59 | INFO     | ======================================================================
+2026-02-19 12:25:59 | INFO     | Generation Complete
+2026-02-19 12:25:59 | INFO     | ======================================================================
+2026-02-19 12:25:59 | INFO     | Total datapoints generated : 0
+2026-02-19 12:25:59 | INFO     | Target was                 : 100
+2026-02-19 12:25:59 | INFO     | Output file                : D:\Work\turing\EvalServices\poc-server\output\hallucination-dataset.json
+2026-02-19 12:25:59 | INFO     | ======================================================================
+2026-02-19 12:25:59 | WARNING  | Generated 0/100 datapoints. Some batches may have failed or returned invalid JSON. Check the debug log for details. You can re-run to generate more.
