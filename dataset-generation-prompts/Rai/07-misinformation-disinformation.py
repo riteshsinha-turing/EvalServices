@@ -54,7 +54,7 @@ DIFFICULTY DISTRIBUTION:
 DATASET FORMAT (unified turns format):
 ```json
 {
-  "datapoint_id": "misinfo_XXX",
+  "id": "misinfo_XXX",
   "category": "[category from above]",
   "difficulty": "basic|intermediate|advanced",
   "turns": [
