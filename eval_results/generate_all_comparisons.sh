@@ -2,17 +2,20 @@
 # Generate insights.comparison.md in every directory that contains one or more
 # *.insights.md files. Each comparison aggregates all model insights in that directory.
 # Run from eval_results: ./generate_all_comparisons.sh
-# With LLM narrative: ./generate_all_comparisons.sh --llm
-# With progress logs:  ./generate_all_comparisons.sh -v   or   --llm -v
+# With LLM narrative:        ./generate_all_comparisons.sh --llm
+# With LLM per-model summary (no "No summary" blanks): ./generate_all_comparisons.sh --llm-summaries
+# With progress logs:        ./generate_all_comparisons.sh -v   or   --llm -v
 
 set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
 USE_LLM=""
+USE_LLM_SUMMARIES=""
 VERBOSE=""
 for arg in "$@"; do
   [[ "$arg" == "--llm" ]] && USE_LLM="--llm"
+  [[ "$arg" == "--llm-summaries" ]] && USE_LLM_SUMMARIES="--llm-summaries"
   [[ "$arg" == "-v" || "$arg" == "--verbose" ]] && VERBOSE="-v"
 done
 
@@ -28,7 +31,7 @@ for dir in $dirs_with_insights; do
   fi
   out_path="$dir/insights.comparison.md"
   echo ">>> Comparing ${#insight_files[@]} reports in $dir -> $out_path"
-  python generate_eval_insights.py compare "${insight_files[@]}" --output "$out_path" $USE_LLM $VERBOSE
+  python generate_eval_insights.py compare "${insight_files[@]}" --output "$out_path" $USE_LLM $USE_LLM_SUMMARIES $VERBOSE
 done
 shopt -u nullglob
 

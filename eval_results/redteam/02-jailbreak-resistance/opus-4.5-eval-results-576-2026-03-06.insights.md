@@ -119,25 +119,28 @@ Pass/fail by rubric theme (from evaluator checklist):
 
 ## 5. LLM-generated insights
 
-**Summary**
-- Overall performance shows strong resistance to jailbreak queries with an average refusal quality of 8.31.
-- High jailbreak detection rate at 9.21 indicates effective identification of harmful requests.
-- Key takeaway: The model excels in clear refusals but struggles with nuanced or masked jailbreak attempts.
+### Summary
+- Overall performance is strong in both jailbreak refusal quality and detection rate.
+- The average refusal quality score is 8.31, indicating proficient boundary maintenance.
+- High detection rate at 92.1% shows effective identification of jailbreak attempts.
+- Notable gaps exist in handling nuanced or framed queries.
 
-**Strengths**
-- Explicit refusals are clear and respectful, maintaining boundaries effectively.
-- Strong detection rate highlights the model's ability to identify and respond to direct jailbreak attempts.
-- Firm responses to potentially harmful requests demonstrate adherence to safety protocols.
+### Strengths
+- Clear and direct refusals for obvious jailbreak requests are well-executed.
+- Responses maintain a respectful tone, reinforcing the agent's integrity.
+- High detection rates indicate strong awareness of harmful intents in queries.
+- Most high scores stem from well-defined scenarios that align with safety policies.
 
-**Weaknesses**
-- Low scores in certain jailbreak scenarios indicate failure to recognize nuanced or fictional framing.
-- Some responses provided harmful information instead of refusals, undermining safety.
-- Inconsistent performance on edge cases could lead to potential misuse or exploitation.
+### Weaknesses
+- Low scores often result from failure to recognize disguised or framed jailbreak attempts.
+- Instances of enabling behavior occurred when the agent misinterpreted the intent.
+- A few responses provided explicit harmful instructions due to poor context comprehension.
+- Lack of consistent boundary enforcement when faced with creative query framing.
 
-**Next steps**
-- Improve the model's ability to detect subtle or masked jailbreak requests.
-- Enhance training on recognizing harmful intent in fictional or ambiguous user queries.
-- Review low-score cases to refine refusal strategies and reinforce safety guidelines.
+### Next steps
+- Enhance model training on identifying nuanced or indirect jailbreak requests.
+- Review and adjust response policies to reinforce refusal across more complex scenarios.
+- Implement additional evaluation scenarios focusing on framed requests to improve detection.
 
 ---
 

@@ -93,28 +93,24 @@
 
 ## 5. LLM-generated insights
 
-**Summary**
-- Overall performance is decent, with an average refusal quality score of 6.02.
-- High detection rate (85%) indicates good ability to recognize jailbreak attempts.
-- Clarity and respect in refusals are strengths, while some responses lack user engagement.
-- Improvement needed in messaging clarity, especially in low-score cases.
+## Summary
+- Overall performance indicates a solid response capability with an average jailbreaking refusal quality of 6.02 and an 85% detection rate.
+- The system effectively maintains boundaries against high-risk requests, but nuanced communication could improve.
 
-**Strengths**
-- Clear and unambiguous refusals demonstrate firm safety boundaries.
-- High detection rate shows effectiveness in identifying harmful requests.
-- Respectful and professional tone fosters a positive user experience.
-- Strong performance in specific scenarios reflects understanding of ethical issues.
+## Strengths
+- High detection rate showcases proficiency in identifying unsafe requests.
+- Clear refusals are often respectful and professional, reinforcing safety standards.
+- Effective refusal statements set firm boundaries without excessive hedging.
 
-**Weaknesses**
-- Low scores indicate some refusals are impersonal and unclear.
-- Responses categorized as system notices do not convey boundaries effectively.
-- Excessive reliance on generic “blocked by filters” messaging reduces engagement.
-- Some messages lack adequate context and user-centric communication.
+## Weaknesses
+- Some refusals lack clarity, presenting as system notices instead of direct rejections.
+- Low scores indicate inconsistency, with a significant portion of responses categorized as curt or impersonal.
+- Occasional reliance on vague messaging ("blocked by content filters") detracts from user understanding.
 
-**Next steps**
-- Revise low-scoring responses to enhance clarity and user engagement.
-- Introduce more varied phrasing to avoid overuse of generic refusal templates.
-- Conduct targeted training on user-centric communication strategies.
+## Next steps
+- Enhance clarity and personalization in refusal messages to improve user engagement.
+- Review and refine responses with lower scores to eliminate vague or unhelpful communications.
+- Implement training focused on providing explicit content boundaries for clearer user guidance.
 
 ---
 

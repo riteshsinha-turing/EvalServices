@@ -32,26 +32,36 @@ Aspect-level comparison derived from score justifications and rubric explanation
 
 | Model | Summary |
 |-------|---------|
-| Haiku 4.5 | Inferred from high score distribution and positive reasoning language. |
-| Nemotron 12B | Inferred from high score distribution and positive reasoning language. |
-| Nova Pro | Inferred from high score distribution and positive reasoning language. |
-| Opus 4.5 | Inferred from high score distribution and positive reasoning language. |
+| Haiku 4.5 | **constructive alternative** (frequent in high-scoring responses) \| **regardless of how the request** (frequent in high-scoring responses) \| **professional and respectful** (frequent in high-scoring responses) \| **redirects to** (frequent in high-scoring responses) |
+| Nemotron 12B | **professional and respectful** (frequent in high-scoring responses) \| **constructive alternative** (frequent in high-scoring responses) \| **redirects to** (frequent in high-scoring responses) \| **no partial** (frequent in high-scoring responses) |
+| Nova Pro | **redirects to** (frequent in high-scoring responses) \| **constructive alternative** (frequent in high-scoring responses) \| **professional and respectful** (frequent in high-scoring responses) |
+| Opus 4.5 | **constructive alternative** (frequent in high-scoring responses) \| **firm boundary** (frequent in high-scoring responses) \| **professional and respectful** (frequent in high-scoring responses) \| **redirects to** (frequent in high-scoring responses) |
+
+### Weaknesses
+
+| Model | Summary |
+|-------|---------|
+| Haiku 4.5 | **undermines** (appears in low-scoring responses) \| **did not recognize** (appears in low-scoring responses) |
+| Nemotron 12B | **did not refuse** (appears in low-scoring responses) \| **undermines** (appears in low-scoring responses) \| **did not recognize** (appears in low-scoring responses) |
+| Nova Pro | **undermines** (appears in low-scoring responses) \| **did not refuse** (appears in low-scoring responses) \| **blank** (appears in low-scoring responses) \| **did not recognize** (appears in low-scoring responses) |
+| Opus 4.5 | **undermines** (appears in low-scoring responses) \| **did not refuse** (appears in low-scoring responses) \| **provided a** (appears in low-scoring responses) |
 
 ## LLM-generated comparison
 
-## Comparison summary
-- **Haiku 4.5** leads overall with the highest average score, showcasing strong effectiveness across all metrics.
-- **Opus 4.5** follows closely, demonstrating robust performance, particularly in toxicity detection.
-- **Nova Pro** and **Nemotron 12B** lag significantly, indicating lower effectiveness in managing harmful content.
+### Comparison summary
+- **Haiku 4.5** ranks highest overall, with robust performance across all metrics.
+- **Opus 4.5** closely follows Haiku, excelling particularly in contextual safety awareness.
+- **Nemotron 12B** has the lowest scores, indicating the most significant struggles with harmful content, while **Nova Pro** shows moderate effectiveness.
 
-## Key differences
-- **Haiku 4.5** excels in all areas, particularly in Toxicity Detection Accuracy (9.10) compared to **Nemotron 12B** (7.17) and **Nova Pro** (7.69).
-- **Opus 4.5** also displays superior scores in Response Appropriateness compared to **Nemotron 12B** and **Nova Pro**, indicating stronger handling of contextually appropriate responses.
-- **Nemotron 12B** shows the weakest performance across all metrics, particularly in Response Appropriateness (6.59).
+### Key differences
+- **Haiku 4.5** and **Opus 4.5** demonstrate strong toxicity detection accuracy, while both **Nemotron 12B** and **Nova Pro** lag significantly in this area.
+- **Nova Pro** performs relatively better in contextual safety awareness compared to **Nemotron 12B**, indicating a more promising understanding of sensitive topics.
+- **Haiku 4.5** leads in all metrics, with particularly high average scores, showcasing its superior handling of harmful requests compared to competitors.
 
-## Recommendations
-- Choose **Haiku 4.5** or **Opus 4.5** for applications requiring high performance in toxicity detection and context awareness.
-- Consider further evaluation and possible fine-tuning for **Nova Pro** and **Nemotron 12B** to improve their effectiveness in handling toxic content.
+### Recommendations
+- For applications requiring high safety standards, prefer **Haiku 4.5** or **Opus 4.5** for better handling of toxic content.
+- **Nova Pro** may be suitable for projects focusing on contextual understanding but should be evaluated further for response appropriateness.
+- Consider fine-tuning or further evaluations for **Nemotron 12B** to enhance its effectiveness in managing harmful content.
 
 ---
 
@@ -59,26 +69,27 @@ Aspect-level comparison derived from score justifications and rubric explanation
 
 ### Haiku 4.5
 
-- Evaluation scores indicate strong overall performance in handling toxicity and harmful content.
-- High averages in Response Appropriateness, Contextual Safety Awareness, and Toxicity Detection Accuracy.
-- Each metric exceeds 86% effectiveness, showcasing robust capabilities.
-- Overall assessment reflects a well-tuned model towards responsible AI standards.
+- Overall performance scored an average of 8.88, demonstrating strong adherence to responsible AI principles regarding toxicity and harmful content.  
+- The main strength lies in the AI's ability to provide constructive alternatives while maintaining a professional and respectful tone.  
+- A significant weakness is its occasional failure to recognize harmful requests, leading to compliance with toxic content generation.
 
 ### Nemotron 12B
 
-*No summary.*
+- Overall performance of Nemotron 12B scored an average of 6.95, reflecting a decent handling of harmful content requests.  
+- Main strength lies in its ability to maintain a professional and respectful tone while often refusing inappropriate requests.  
+- Major weakness is a tendency to fail in recognizing harmful intents, which sometimes leads to compliance with toxic requests instead of redirection.
 
 ### Nova Pro
 
-- Nova Pro evaluation completed with 100 items assessed.
-- Average scores indicate decent performance but room for improvement.
-- Overall, the model demonstrates good contextual safety awareness and toxicity detection accuracy.
-- Key takeaway: scores signify moderate effectiveness in handling toxic and harmful content.
+- Overall performance is solid with an average score of 7.33, indicating competent management of toxicity and harmful content.  
+- Main strength lies in the AI's ability to redirect users to constructive alternatives while maintaining a professional and respectful tone.  
+- Main weakness is the failure to consistently recognize and refuse harmful requests, leading to instances of compliant, inappropriate output.
 
 ### Opus 4.5
 
-- Overall performance is strong with high average scores across all metrics.
-- Main takeaway: The AI demonstrates good awareness of toxicity and harmful content.
+- Overall performance averages 8.83 across key metrics, indicating strong effectiveness in managing harmful content.
+- Main strength lies in the AI's ability to provide constructive alternatives and maintain professional tone in high-scoring instances.
+- The primary weakness is the failure to refuse requests for passive-aggressive or toxic communication, leading to contextually unsafe outputs.
 
 ---
 

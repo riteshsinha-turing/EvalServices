@@ -4,19 +4,18 @@ Comparison of model results for the same evaluation dataset.
 
 ## Scores by metric (average)
 
-| Metric | Nova Pro | Haiku 4.5 | Nemotron 12B | Nova Pro | Opus 4.5 |
-|--------|--------|--------|--------|--------|--------|
-| Responsible AI :  Misinformation & Disinformation - Source Attribution Quality | 5.98 | 9.29 | 5.77 | 5.98 | 9.01 |
-| Responsible AI :  Misinformation & Disinformation - Misinformation Detection Accuracy | 6.03 | 8.49 | 5.26 | 6.03 | 8.39 |
-| **Overall average** | 6.01 | 8.89 | 5.51 | 6.01 | 8.70 |
+| Metric | Haiku 4.5 | Nemotron 12B | Nova Pro | Opus 4.5 |
+|--------|--------|--------|--------|--------|
+| Responsible AI :  Misinformation & Disinformation - Source Attribution Quality | 9.29 | 5.77 | 5.98 | 9.01 |
+| Responsible AI :  Misinformation & Disinformation - Misinformation Detection Accuracy | 8.49 | 5.26 | 6.03 | 8.39 |
+| **Overall average** | 8.89 | 5.51 | 6.01 | 8.70 |
 
 ## Ranking (by overall average)
 
 1. **Haiku 4.5**: 8.89
 2. **Opus 4.5**: 8.70
 3. **Nova Pro**: 6.01
-4. **Nova Pro**: 6.01
-5. **Nemotron 12B**: 5.51
+4. **Nemotron 12B**: 5.51
 
 ## Best model per metric
 
@@ -31,59 +30,64 @@ Aspect-level comparison derived from score justifications and rubric explanation
 
 | Model | Summary |
 |-------|---------|
-| Nova Pro | Inferred from high score distribution and positive reasoning language. |
 | Haiku 4.5 | Inferred from high score distribution and positive reasoning language. |
-| Nemotron 12B | Inferred from high score distribution and positive reasoning language. |
-| Nova Pro | Inferred from high score distribution and positive reasoning language. |
+| Nemotron 12B | **redirects to** (frequent in high-scoring responses) \| **constructive alternative** (frequent in high-scoring responses) \| **no partial** (frequent in high-scoring responses) |
+| Nova Pro | **redirects to** (frequent in high-scoring responses) \| **no partial** (frequent in high-scoring responses) \| **constructive alternative** (frequent in high-scoring responses) |
 | Opus 4.5 | Inferred from high score distribution and positive reasoning language. |
+
+### Weaknesses
+
+| Model | Summary |
+|-------|---------|
+| Haiku 4.5 | — |
+| Nemotron 12B | **no evidence** (appears in low-scoring responses) \| **did not recognize** (appears in low-scoring responses) \| **did not refuse** (appears in low-scoring responses) \| **not a refusal** (appears in low-scoring responses) |
+| Nova Pro | **partial compliance** (appears in low-scoring responses) \| **no evidence** (appears in low-scoring responses) \| **undermines** (appears in low-scoring responses) \| **did not refuse** (appears in low-scoring responses) |
+| Opus 4.5 | — |
 
 ## LLM-generated comparison
 
-## Comparison summary
-- **Top Performer:** Haiku 4.5 leads with the highest overall average and superior scores in source attribution and misinformation detection.
-- **Middle Ground:** Opus 4.5 follows closely, showing strong source attribution but slightly lower detection accuracy.
-- **Lower Performers:** Nova Pro and Nemotron 12B lag significantly, with Nemotron demonstrating the weakest results across all metrics.
+### Comparison summary
+- **Haiku 4.5** leads overall with the highest average score, showcasing strong performance in both source attribution and misinformation detection.
+- **Opus 4.5** closely follows, excelling particularly in source attribution quality.
+- **Nemotron 12B** and **Nova Pro** lag significantly behind in both metrics, indicating much lower effectiveness.
 
-## Key differences
-- **Source Attribution Quality:** Haiku 4.5 excels (avg=9.29) compared to Nova Pro (avg=5.98) and Nemotron 12B (avg=5.77).
-- **Misinformation Detection Accuracy:** Haiku 4.5's score (avg=8.49) is substantially better than both Nova Pro (avg=6.03) and Nemotron 12B (avg=5.26).
-- **Overall Effectiveness:** Nemotron 12B shows moderate effectiveness, meeting only half of the responsible AI expectations, while Nova Pro and Opus perform better.
+### Key differences
+- **Haiku 4.5** and **Opus 4.5** both show high reliability in source attribution, scoring over 9, whereas **Nemotron 12B** and **Nova Pro** score below 6.
+- In misinformation detection accuracy, **Haiku 4.5** and **Opus 4.5** demonstrate better performance (around 8), contrasting with **Nemotron 12B** (5.26) and **Nova Pro** (6.03).
+- **Nova Pro** displays high variability in scores, suggesting inconsistency in performance, while **Nemotron 12B** shows a consistent low performance across both metrics.
 
-## Recommendations
-- **Choose Haiku 4.5** when high reliability in misinformation management is required.
-- **Consider Opus 4.5** for strong source attribution with good but slightly less robust detection capabilities.
-- **Further evaluation needed** for Nova Pro and Nemotron 12B to address their deficiencies in responsible AI practices.
+### Recommendations
+- Prefer **Haiku 4.5** for tasks requiring high accuracy in misinformation detection and source attribution.
+- Consider **Opus 4.5** for applications focused on robust source attribution quality.
+- Further evaluation and fine-tuning are recommended for **Nemotron 12B** and **Nova Pro** to address their critical gaps in performance.
 
 ---
 
 ## Model summaries (from individual reports)
 
-### Nova Pro
-
-*No summary.*
-
 ### Haiku 4.5
 
-- Overall performance shows strong capability in handling misinformation and disinformation tasks.
-- Average score for source attribution quality is 9.29, indicating high reliability.
-- Misinformation detection accuracy is decent at 8.49, suggesting room for improvement.
-- Main takeaway: solid foundation for responsible AI with specific areas for enhancement.
+- Overall performance is strong with an average score of 8.89 across metrics, indicating reliability in source attribution and good misinformation detection.
+- Main strength lies in the high score of 9.29 for Source Attribution Quality, reflecting its effectiveness.
+- Main weakness is the lack of detailed turn-level scores, which hinders deeper performance insights, particularly in misinformation detection accuracy.
 
 ### Nemotron 12B
 
-- Overall performance indicates moderate effectiveness in handling misinformation and disinformation.
-- Average scores suggest that the model meets only half the expectations for responsible AI practices.
-- Key takeaway: Improvement is needed in both source attribution and misinformation detection.
+- Overall performance indicates moderate effectiveness, with an average score of 5.51 in misinformation detection and source attribution quality.  
+- Main strength lies in high source integrity, as it frequently refuses to generate unverifiable content and provides clear justifications for its decisions.  
+- Main weakness is the significant occurrence of low scores (28 items scored 1), reflecting challenges in recognizing and rejecting explicit misinformation requests.
 
 ### Nova Pro
 
-*No summary.*
+- Overall performance is moderate, with an average score of 6.01 in managing misinformation.  
+- Main strength lies in strong source integrity demonstrated by high scores for non-compliance with harmful requests.  
+- Main weakness is significant when agents partially comply, leading to frequent fabrications and unreliable citations.
 
 ### Opus 4.5
 
-- Overall performance indicates strong ability in source attribution quality (avg: 9.01).
-- Misinformation detection accuracy is decent, but lower compared to attribution (avg: 8.39).
-- Both metrics show high levels of performance but with room for improvement in detection.
+- Overall performance is strong with an average score of 8.70, particularly excelling in source attribution quality (9.01).
+- Main strength lies in high source attribution quality scores, indicating reliability in responsible AI applications.
+- Main weakness is the absence of turn-level scores, which limits detailed insights and targeted improvement efforts.
 
 ---
 

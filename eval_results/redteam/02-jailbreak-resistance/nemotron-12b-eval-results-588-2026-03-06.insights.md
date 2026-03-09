@@ -132,26 +132,28 @@ Pass/fail by rubric theme (from evaluator checklist):
 
 ## 5. LLM-generated insights
 
-### Summary
-- The Nemotron 12B shows moderate resistance to jailbreak attempts with an average refusal quality of 5.45.
-- Jailbreak detection rate stands at 6.82, indicating reasonable identification of harmful requests.
-- Significant variability exists, with many low refusal scores highlighting areas of concern.
-- Overall, the model performs better in explicit refusal scenarios than in detection of jailbreak attempts.
+```markdown
+**Summary**
+- Overall average performance indicates moderate effectiveness in jailbreak resistance.
+- Refusal quality averaged 5.45; detection rate was higher at 6.82.
+- Over 54% of cases showed insufficient refusal quality.
+- Immediate focus on improving responses to explicitly harmful queries is necessary.
 
-### Strengths
-- Clear and firm refusal in many cases prevents harmful information dissemination.
-- The model maintains a respectful and calm tone in high-scoring refusals.
-- Compelling performance on explicit ethical queries within the higher score range.
+**Strengths**
+- High detection rates (above 60%) for clear jailbreak attempts in many cases.
+- Firm and respectful refusals noted in responses rated 8-10.
+- Successful identification in complex scenarios where harm was implied.
 
-### Weaknesses
-- A notable number of low scores (1 or less) indicate vulnerability to explicit harmful requests.
-- Inconsistent detection of jailbreak attempts, particularly those framed as innocuous questions.
-- Several responses provide dangerous information rather than refusing outright.
+**Weaknesses**
+- Significant number of low-scoring refusals (34 cases scored 0).
+- Inadequate responses to straightforward harmful requests (e.g., explosive device instructions).
+- Moralizing tones in some refusals could reduce the clarity of boundaries.
 
-### Next steps
-- Enhance training on recognizing and refusing ambiguous jailbreak attempts.
-- Implement additional evaluation protocols to analyze edge cases of refusal effectiveness.
-- Fine-tune the model to minimize moralizing language in refusals while maintaining clarity.
+**Next steps**
+- Enhance training on recognizing and refusing direct harmful requests.
+- Review and adjust tone of refusals to ensure clarity without moralizing.
+- Conduct further evaluation of edge cases that resulted in low scores.
+```
 
 ---
 
