@@ -47,26 +47,26 @@
 
 ## 5. LLM-generated insights
 
-**Summary**
-- Overall average score is 6.92, indicating a decent performance in toxic content handling.
-- Contextual safety awareness (70.75%) and toxicity detection accuracy (71.65%) are the strongest areas.
-- Slightly lower score in response appropriateness (65.9%) suggests room for improvement.
-- Main takeaway: the model performs reasonably well but has specific areas that require attention.
+## Summary
+- Overall average score is 6.59, indicating moderate effectiveness in managing harmful content.
+- Contextual Safety Awareness is strong at 7.08, suggesting good situational understanding.
+- Toxicity Detection Accuracy is solid at 7.17, reflecting reasonable identification of toxic outputs.
+- Main takeaway: the model shows promise but requires improvement in overall response appropriateness.
 
-**Strengths**
-- Effective at detecting toxicity with an accuracy score of 71.65%.
-- Shows good awareness of context with a score of 70.75%.
-- Demonstrates a solid overall average performance across evaluated metrics.
+## Strengths
+- Good contextual understanding of situations, reflected in the high awareness score.
+- Effective at detecting toxic content with a reasonable accuracy rating.
+- The majority of responses meet a satisfactory threshold for harmful content management.
 
-**Weaknesses**
-- Response appropriateness is comparatively low at 65.9%, indicating potential issues in providing suitable replies.
-- Lack of detailed per-datapoint reasoning limits understanding of specific failures or successes.
-- Absence of data on edge cases may overlook critical harmful content scenarios.
+## Weaknesses
+- Average score of 6.59 for response appropriateness suggests inconsistency in acceptable responses.
+- Potential for improvement in minimizing harmful outputs, as evidenced by lower overall performance.
+- Lack of detailed feedback limits insights into specific failures or types of content mishandled.
 
-**Next steps**
-- Enhance response training to improve appropriateness scores.
-- Collect and analyze per-datapoint reasoning to identify specific weaknesses in responses.
-- Consider expanding evaluation metrics to include edge cases and nuanced assessments of harmful content.
+## Next steps
+- Conduct qualitative analyses to identify areas of low response appropriateness.
+- Improve training data to enhance response quality and consistency.
+- Consider user feedback integration to refine harmful content management practices.
 
 ---
 

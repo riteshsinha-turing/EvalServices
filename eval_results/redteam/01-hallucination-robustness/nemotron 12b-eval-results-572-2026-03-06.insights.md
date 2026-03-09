@@ -63,21 +63,26 @@ Pass/fail by rubric theme (from evaluator checklist):
 ## 5. LLM-generated insights
 
 ### Summary
-- Nemotron 12B achieved mixed results in RT-Hallucination Robustness evaluation.
-- Average scores indicate moderate performance in confidence calibration, citation verification, and factual accuracy.
-- Notable concerns include lower performance consistency across different metrics.
+- Overall performance indicates moderate robustness to hallucinations with average scores around 4.75-5.75.
+- Key takeaway is the system's performance in factual accuracy and citation verification needs improvement.
+- Scores suggest a significant percentage of responses may lack reliable content.
+- Evaluation completed with full item set assessed, ensuring comprehensive insights.
 
 ### Strengths
-- Citation verification scored the highest average at 5.75, indicating reliable referencing abilities.
-- Overall completion of all evaluation items suggests thorough testing and evaluation.
+- Average score for citation verification (5.75) shows reasonable performance in confirming sources.
+- The evaluation framework allows clear identification of hallucination-related issues.
+- Robust methodology applied with a full item assessment enhances reliability of findings.
 
 ### Weaknesses
-- Confidence calibration and factual accuracy both scored below the midpoint, highlighting areas for improvement.
-- Significant potential for hallucinations with an average score of 4.75, indicating a risk in information generation.
+- Average scores around 4.75 in confidence calibration indicate potential issues with certainty in responses.
+- Factual accuracy score (4.98) suggests nearly half of responses may be problematic.
+- Reliance on citation may not fully mitigate hallucinations in factual contexts.
+- Lack of detailed per-datapoint reasoning limits insights into specific failure patterns.
 
 ### Next steps
-- Implement targeted retraining to improve factual accuracy and confidence calibration.
-- Analyze corpus or training data to identify gaps leading to hallucinations and improve response reliability.
+- Conduct targeted investigations to enhance factual accuracy and confidence calibration.
+- Implement systematic training focusing on reducing hallucinations in responses.
+- Explore data collection methods for per-datapoint insights in future evaluations.
 
 ---
 

@@ -93,28 +93,28 @@
 
 ## 5. LLM-generated insights
 
-## Summary
-- Overall performance indicates strong resistance to jailbreak attempts.
-- Average refusal quality score is moderate at 6.02; detection rate is high at 8.5.
-- Clear refusals noted, but some responses lack user engagement.
-- Focused improvement needed in the clarity of refusal messages.
+**Summary**
+- Overall performance is decent, with an average refusal quality score of 6.02.
+- High detection rate (85%) indicates good ability to recognize jailbreak attempts.
+- Clarity and respect in refusals are strengths, while some responses lack user engagement.
+- Improvement needed in messaging clarity, especially in low-score cases.
 
-## Strengths
-- High jailbreak detection rate showing effective content filtering.
-- Many refusals are clear and maintain a respectful tone.
-- Responses mostly assert firm boundaries against harmful requests.
-- Effective in communicating legal and ethical implications.
+**Strengths**
+- Clear and unambiguous refusals demonstrate firm safety boundaries.
+- High detection rate shows effectiveness in identifying harmful requests.
+- Respectful and professional tone fosters a positive user experience.
+- Strong performance in specific scenarios reflects understanding of ethical issues.
 
-## Weaknesses
-- Some refusals were overly curt, lacking user-centered communication.
-- Low-score distributions suggest inconsistencies in refusal clarity.
-- Certain responses felt impersonal and may disengage users.
-- Messages sometimes defaulted to system notices rather than user-directed refusals.
+**Weaknesses**
+- Low scores indicate some refusals are impersonal and unclear.
+- Responses categorized as system notices do not convey boundaries effectively.
+- Excessive reliance on generic “blocked by filters” messaging reduces engagement.
+- Some messages lack adequate context and user-centric communication.
 
-## Next steps
-- Enhance training on user-centered communication in refusal messages.
-- Review and improve responses categorized as low scores for clarity and engagement.
-- Implement feedback loops for continuous refinement of refusal strategies.
+**Next steps**
+- Revise low-scoring responses to enhance clarity and user engagement.
+- Introduce more varied phrasing to avoid overuse of generic refusal templates.
+- Conduct targeted training on user-centric communication strategies.
 
 ---
 

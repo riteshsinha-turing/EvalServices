@@ -40,19 +40,19 @@ Aspect-level comparison derived from score justifications and rubric explanation
 ## LLM-generated comparison
 
 ## Comparison summary
-- Haiku 4.5 leads significantly with the highest overall average score, followed closely by Opus 4.5.
-- Nova Pro ranks in the middle, while Nemotron 12B has the lowest performance across all metrics.
-- Key strengths for Haiku 4.5 include high source attribution quality and misinformation detection accuracy.
+- **Top Performer:** Haiku 4.5 leads with the highest overall average and superior scores in source attribution and misinformation detection.
+- **Middle Ground:** Opus 4.5 follows closely, showing strong source attribution but slightly lower detection accuracy.
+- **Lower Performers:** Nova Pro and Nemotron 12B lag significantly, with Nemotron demonstrating the weakest results across all metrics.
 
 ## Key differences
-- Haiku 4.5 excels in both source attribution quality and misinformation detection accuracy, while Nemotron 12B shows notable weaknesses in these areas.
-- Opus 4.5 is also strong but slightly lower than Haiku 4.5, especially in misinformation detection.
-- Nova Pro demonstrates moderate performance, indicating a need for improvement in its responsible AI metrics compared to the leaders.
+- **Source Attribution Quality:** Haiku 4.5 excels (avg=9.29) compared to Nova Pro (avg=5.98) and Nemotron 12B (avg=5.77).
+- **Misinformation Detection Accuracy:** Haiku 4.5's score (avg=8.49) is substantially better than both Nova Pro (avg=6.03) and Nemotron 12B (avg=5.26).
+- **Overall Effectiveness:** Nemotron 12B shows moderate effectiveness, meeting only half of the responsible AI expectations, while Nova Pro and Opus perform better.
 
 ## Recommendations
-- Choose Haiku 4.5 for applications requiring high performance in responsible AI metrics.
-- Consider Opus 4.5 for similar tasks with slightly less emphasis on source attribution quality.
-- Further evaluation or fine-tuning may be necessary for Nova Pro and Nemotron 12B to enhance their capabilities in misinformation detection and source attribution.
+- **Choose Haiku 4.5** when high reliability in misinformation management is required.
+- **Consider Opus 4.5** for strong source attribution with good but slightly less robust detection capabilities.
+- **Further evaluation needed** for Nova Pro and Nemotron 12B to address their deficiencies in responsible AI practices.
 
 ---
 
@@ -64,24 +64,26 @@ Aspect-level comparison derived from score justifications and rubric explanation
 
 ### Haiku 4.5
 
-*No summary.*
+- Overall performance shows strong capability in handling misinformation and disinformation tasks.
+- Average score for source attribution quality is 9.29, indicating high reliability.
+- Misinformation detection accuracy is decent at 8.49, suggesting room for improvement.
+- Main takeaway: solid foundation for responsible AI with specific areas for enhancement.
 
 ### Nemotron 12B
 
-- Overall evaluation score indicates moderate performance in addressing misinformation and disinformation.
-- Average scores reflect challenges in source attribution and detection accuracy.
-- Key takeaway: Need for improvement in responsible AI metrics.
+- Overall performance indicates moderate effectiveness in handling misinformation and disinformation.
+- Average scores suggest that the model meets only half the expectations for responsible AI practices.
+- Key takeaway: Improvement is needed in both source attribution and misinformation detection.
 
 ### Nova Pro
 
-- Overall scores indicate moderate performance with averages just below 6.0.
-- Misinformation detection shows slightly better accuracy than source attribution.
-- Both metrics reflect a need for improvement in responsible AI capabilities.
-- Effective handling of misinformation remains a critical area for enhancement.
+*No summary.*
 
 ### Opus 4.5
 
-*No summary.*
+- Overall performance indicates strong ability in source attribution quality (avg: 9.01).
+- Misinformation detection accuracy is decent, but lower compared to attribution (avg: 8.39).
+- Both metrics show high levels of performance but with room for improvement in detection.
 
 ---
 

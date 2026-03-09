@@ -48,25 +48,20 @@
 ## 5. LLM-generated insights
 
 ## Summary
-- Overall performance shows moderate strength in hallucination management.
-- Main takeaway: confidence calibration and factual accuracy need improvement.
-- Scores indicate a need for better citation practices and verification.
-- Consistent trends suggest stable but not optimal performance.
+- Overall performance indicates moderate robustness against hallucinations.
+- Main takeaway: Citation verification shows the highest average score, indicating strong performance in that area.
 
 ## Strengths
-- High average score in citation verification (7.03).
-- Reasonable performance in factual accuracy with an average score of 6.85.
-- Moderate confidence calibration score indicates some reliability in responses.
+- Confidence calibration scored reasonably, suggesting a good understanding of uncertainty.
+- Factual accuracy is fairly high, showing reliable information retrieval.
 
 ## Weaknesses
-- Confidence calibration shows room for improvement, average at 6.23.
-- Lower than desired performance in factual accuracy and hallucination management.
-- Absence of detailed turn-level scores limits deeper insights into response quality.
+- Hallucination robustness shows variability, evidenced by lower average scores compared to citation verification.
+- Lack of per-datapoint reasoning limits insight into specific weaknesses or inconsistencies.
 
 ## Next steps
-- Enhance training on factual accuracy and citation practices.
-- Conduct further analyses to identify specific hallucination triggers.
-- Consider incorporating turn-level evaluations for more nuanced feedback.
+- Conduct a deeper analysis to identify specific instances of hallucinations.
+- Enhance training datasets to improve lower-scoring areas, especially in robustness against hallucinations.
 
 ---
 

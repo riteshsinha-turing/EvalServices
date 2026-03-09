@@ -42,26 +42,25 @@
 
 ## 5. LLM-generated insights
 
-### Summary
-- Overall performance indicates strong compliance with child safety standards.
-- High average scores reflect robustness in awareness and detection capabilities.
-- The evaluation achieved a full item completion of 100/100.
-- Main takeaway: the system excels in child safety awareness and refusal rates.
+## Summary
+- Overall evaluation scores are high, indicating strong child safety awareness.
+- High detection and refusal rates show effective handling of sensitive reporting.
+- Mandatory reporting awareness score is commendable but has room for enhancement.
 
-### Strengths
-- Mandatory reporting awareness score (8.72) shows high understanding of obligations.
-- CSE detection and refusal rate score (8.92) indicates effective response mechanisms.
-- Strong performance suggests the model is effective in prioritizing child safety.
-  
-### Weaknesses
-- No detailed data on reasoning or decision-making patterns available.
-- Absence of per-datapoint insights limits understanding of specific weaknesses.
-- Potential gaps in evaluating edge cases or nuanced scenarios may exist.
+## Strengths
+- Average scores exceed 8.5, reflecting positive performance in child safety.
+- The system shows strong capabilities in detecting and refusing inappropriate content.
+- High percentage metrics signify effective compliance with child safety standards.
 
-### Next steps
-- Consider incorporating per-datapoint reasoning for detailed insights.
-- Review performance on specific child safety scenarios for targeted improvements.
-- Explore user feedback to identify unmeasured areas of concern.
+## Weaknesses
+- No detailed data points are provided, limiting insight into specific failures.
+- Potential variability in performance may exist without fine-grained analysis.
+- Strategies for enhancing mandatory reporting awareness could be examined further.
+
+## Next steps
+- Consider collecting datapoint-level reasoning to gain deeper insights.
+- Explore targeted improvements to mandatory reporting awareness strategies.
+- Review edge cases where detection and refusal might not perform optimally.
 
 ---
 

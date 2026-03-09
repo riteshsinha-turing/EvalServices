@@ -50,19 +50,17 @@ Aspect-level comparison derived from score justifications and rubric explanation
 ## LLM-generated comparison
 
 ### Comparison summary
-- **Haiku 4.5** leads the group with the highest overall average and strong performance across all assessed metrics.
-- **Nova Pro** and **Nemotron 12B** have similar scores, with Nova Pro slightly outperforming Nemotron.
-- **Opus 4.5** follows closely behind Haiku 4.5, showing solid results but slightly lower than Haiku's top scores.
+- **Overall Leader:** Haiku 4.5 with the highest average score (8.82).
+- **Significant Gap:** Models vary widely in CSE Detection & Refusal Rate, with Haiku 4.5 scoring highest (8.92) and Nova Pro lowest (5.37).
+- **Moderate Performance:** Nova Pro and Nemotron 12B are closely ranked, but both demonstrate lower performance compared to Haiku 4.5 and Opus 4.5.
 
 ### Key differences
-- **Haiku 4.5** significantly excels in both Mandatory Reporting Awareness and CSE Detection & Refusal Rates compared to the other models.
-- **Nemotron 12B** lags behind in CSE Detection & Refusal Rates, showing a notable gap of roughly 3% compared to Nova Pro.
-- There are smaller differences between **Nova Pro** and **Opus 4.5**, particularly in the Detection & Refusal Rates, where Opus has a stronger performance.
+- **Mandatory Reporting Awareness:** All models perform well, but Nova Pro and Nemotron 12B score lower than Haiku 4.5 and Opus 4.5.
+- **CSE Detection & Refusal Rate:** Haiku 4.5 excels significantly, while Nova Pro struggles considerably, indicating a critical area for improvement.
 
 ### Recommendations
-- Choose **Haiku 4.5** for applications requiring the highest compliance and robustness in child safety standards.
-- **Opus 4.5** is a better option than Nova Pro for scenarios needing strong detection capabilities but without reaching Haiku's level of safety.
-- Consider further evaluation or fine-tuning of **Nemotron 12B** to improve its CSE detection capabilities.
+- **When to Prefer Models:** Choose Haiku 4.5 for top-performance needs in child safety evaluations.
+- **Suggested Next Steps:** Further evaluation of Nova Pro and Nemotron 12B is recommended, focusing on enhancing their detection and refusal capabilities.
 
 ---
 
@@ -70,14 +68,14 @@ Aspect-level comparison derived from score justifications and rubric explanation
 
 ### Nova Pro
 
-*No summary.*
+- Overall performance indicates a robust awareness of mandatory reporting with an average score of 8.34.
+- Challenges remain in the effective detection and refusal rate for child sexual exploitation (CSE), averaging only 5.37.
+- Mandatory reporting practices are strong, but the agent's response is inconsistent regarding refusal to engage with illegal content.
+- Focus needed on improving clarity and decisiveness in handling CSE-related queries.
 
 ### Haiku 4.5
 
-- Overall performance indicates strong compliance with child safety standards.
-- High average scores reflect robustness in awareness and detection capabilities.
-- The evaluation achieved a full item completion of 100/100.
-- Main takeaway: the system excels in child safety awareness and refusal rates.
+*No summary.*
 
 ### Nemotron 12B
 
@@ -85,7 +83,9 @@ Aspect-level comparison derived from score justifications and rubric explanation
 
 ### Nova Pro
 
-*No summary.*
+- Overall performance is moderate with an average score of 8.34 for Mandatory Reporting Awareness.
+- The detection and refusal rate for Child Safety is significantly lower, averaging at 5.37.
+- Main takeaway: While awareness of reporting is high, detection and response to safety concerns need improvement.
 
 ### Opus 4.5
 

@@ -72,19 +72,21 @@ Aspect-level comparison derived from score justifications and rubric explanation
 ## LLM-generated comparison
 
 ### Comparison summary
-- **Haiku 4.5** ranks highest overall, followed by **Opus 4.5**, **Nova Pro**, and **Nemotron 12B**.
-- Main differences include Haiku's strong performance in Jailbreak Detection and Refusal Quality, whereas Nemotron shows significant weaknesses.
-- Haiku leads in multiple safety metrics and overall scores, making it the most reliable choice.
+- **Haiku 4.5** leads overall with the highest average safety score.
+- **Opus 4.5** closely follows, excelling in jailbreak detection but slightly lower in refusal quality.
+- **Nemotron 12B** is significantly behind, showing notable vulnerabilities in refusal and detection metrics.
+- **Nova Pro** ranks above Nemotron but does not match the performance levels of Haiku or Opus.
 
 ### Key differences
-- Haiku 4.5 excels in Jailbreak Detection Rate (9.42) and Safety Maintained (91.00), contrasting with Nemotron 12B's low scores in these areas (6.82 and 65.00, respectively).
-- Opus 4.5 shows notable strengths in Jailbreak Detection (9.21) but is still behind Haiku in Safety Maintained and No Harmful Content metrics.
-- Nova Pro performs moderately well but lacks in both Jailbreak Refusal Quality and Safety metrics compared to the top models.
+- **Haiku 4.5** excels in jailbreaking refusal quality and detection rate, providing the best overall reliability in preventing harmful interactions.
+- **Opus 4.5** shows strong performance in jailbreak detection but has lower scores in safety-maintained and graceful refusal compared to Haiku.
+- **Nemotron 12B** has the weakest scores across all metrics, especially in attack recognition and graceful refusal, indicating serious safety concerns.
+- **Nova Pro** shows moderate capabilities but fails to keep pace with Haiku and Opus in critical metrics like refusal quality.
 
 ### Recommendations
-- Prefer **Haiku 4.5** for applications prioritizing safety and robust defense against harmful requests.
-- Consider **Opus 4.5** for environments that can tolerate slightly lower safety scores but require strong detection capabilities.
-- Investigate further fine-tuning opportunities for **Nemotron 12B** to improve its significant gaps in safety and detection metrics.
+- Prefer **Haiku 4.5** when maximum safety and jailbreak resistance is needed.
+- **Opus 4.5** is suitable where detection is critical, but be cautious about its refusal metrics.
+- For any model showing weaknesses, consider further evaluation or fine-tuning, particularly targeting refusal and attack recognition metrics.
 
 ---
 
@@ -96,9 +98,10 @@ Aspect-level comparison derived from score justifications and rubric explanation
 
 ### Nemotron 12B
 
-- Nemotron 12B achieved an average Jailbreak Refusal Quality score of 5.45.
-- Overall Jailbreak Detection Rate stands at 6.82, indicating moderate effectiveness.
-- Performance reflects mixed results in addressing harmful requests, with significant room for improvement.
+- The Nemotron 12B shows moderate resistance to jailbreak attempts with an average refusal quality of 5.45.
+- Jailbreak detection rate stands at 6.82, indicating reasonable identification of harmful requests.
+- Significant variability exists, with many low refusal scores highlighting areas of concern.
+- Overall, the model performs better in explicit refusal scenarios than in detection of jailbreak attempts.
 
 ### Nova Pro
 

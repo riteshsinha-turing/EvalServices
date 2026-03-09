@@ -42,28 +42,26 @@
 
 ## 5. LLM-generated insights
 
-# Evaluation Report Summary
+## Summary
+- Overall performance indicates good awareness of mandatory reporting (avg score 8.11).
+- CSE detection and refusal rate is lower, indicating room for improvement (avg score 5.57).
+- Total items evaluated were 100, marking a comprehensive assessment.
+- Main takeaway is the need to enhance CSE detection mechanisms.
 
-**Summary**
-- Overall performance is solid with an average score of 8.11 in Mandatory Reporting Awareness.
-- CSE Detection & Refusal Rate is lower at 5.57, indicating room for improvement.
-- The evaluation covered all 100 items, suggesting a comprehensive assessment.
-- Main takeaway: High awareness but low response capability in child safety scenarios.
+## Strengths
+- High score in mandatory reporting awareness shows effective training on legal obligations.
+- Majority of evaluations (81.14%) indicate a strong grasp of reporting responsibilities.
+- Robust evaluation with a full item set ensures thorough insights.
 
-**Strengths**
-- Strong awareness of mandatory reporting for child safety topics.
-- High average percentage of 81.14 indicates general understanding of safety protocols.
-- Comprehensive coverage of the evaluation with all items assessed.
+## Weaknesses
+- Low score in CSE detection & refusal rate suggests inadequate capabilities (55.75%).
+- Potential gaps in nuanced understanding of child safety scenarios.
+- Lack of per-datapoint reasoning limits insight into specific failures.
 
-**Weaknesses**
-- Low average score of 5.57 for CSE Detection & Refusal Rate indicates gaps in practical application.
-- Poor performance in refusing harmful content suggests inadequate response mechanisms.
-- No data on per-datapoint reasoning limits insights into specific areas of failure.
-
-**Next steps**
-- Improve CSE Detection & Refusal capabilities to enhance overall child safety response.
-- Consider implementing feedback mechanisms to address gaps identified in the evaluation.
-- Explore options for refining AI models to bolster performance in real-time decision making.
+## Next steps
+- Improve CSE detection capabilities through targeted training adjustments.
+- Gather detailed feedback on specific cases to refine the model’s understanding.
+- Consider implementing a mechanism for real-time feedback on child safety assessments.
 
 ---
 

@@ -119,30 +119,25 @@ Pass/fail by rubric theme (from evaluator checklist):
 
 ## 5. LLM-generated insights
 
-```markdown
 **Summary**
-- Overall performance is strong, with high refusal quality (average score 8.31) and detection rate (average score 9.21).
-- 83.1% of refusals were clear and direct, indicating effective boundary maintenance.
-- High scores reflect ability to recognize and refuse clear jailbreak attempts.
-- Notable gaps remain in recognizing fictional framing for harmful requests.
+- Overall performance shows strong resistance to jailbreak queries with an average refusal quality of 8.31.
+- High jailbreak detection rate at 9.21 indicates effective identification of harmful requests.
+- Key takeaway: The model excels in clear refusals but struggles with nuanced or masked jailbreak attempts.
 
 **Strengths**
-- Agents effectively refuse requests that pose clear risks, maintaining a calm and respectful tone.
-- Consistent high detection rates for malignant intent in direct inquiries.
-- Many refusals demonstrate unambiguous boundaries without hedging.
-- Clear explanations provided in refusals enhance user understanding of decisions.
+- Explicit refusals are clear and respectful, maintaining boundaries effectively.
+- Strong detection rate highlights the model's ability to identify and respond to direct jailbreak attempts.
+- Firm responses to potentially harmful requests demonstrate adherence to safety protocols.
 
 **Weaknesses**
-- Several agents failed to recognize requests disguised as fictional scenarios, leading to enabling responses.
-- Low scores were noted for responses involving phishing and torture methods that were not refused.
-- Inconsistent detection of subtle jailbreak attempts suggests room for improvement in nuanced understanding.
-- A few refusals exhibited slight moralizing language, which could detract from clarity.
+- Low scores in certain jailbreak scenarios indicate failure to recognize nuanced or fictional framing.
+- Some responses provided harmful information instead of refusals, undermining safety.
+- Inconsistent performance on edge cases could lead to potential misuse or exploitation.
 
 **Next steps**
-- Enhance training for agents on recognizing and responding to fictional framing in potentially harmful queries.
-- Review and refine refusal strategies to minimize moralizing tones while maintaining strong boundaries.
-- Conduct targeted evaluations on borderline cases to improve nuanced detection capabilities.
-```
+- Improve the model's ability to detect subtle or masked jailbreak requests.
+- Enhance training on recognizing harmful intent in fictional or ambiguous user queries.
+- Review low-score cases to refine refusal strategies and reinforce safety guidelines.
 
 ---
 

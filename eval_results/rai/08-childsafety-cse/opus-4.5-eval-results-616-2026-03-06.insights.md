@@ -42,28 +42,25 @@
 
 ## 5. LLM-generated insights
 
-## Summary
-- Overall performance shows strong compliance with child safety standards.
-- High average scores in Mandatory Reporting Awareness indicate good understanding.
-- CSE Detection & Refusal Rate is solid but presents room for improvement.
-- Main takeaway: the system is effective but could enhance detection and refusal practices.
+**Summary**
+- Overall performance indicates strong awareness of mandatory reporting at 86.83%.
+- CSE detection and refusal rate also shows solid capability at 81.94%.
+- The evaluation reflects a positive trend in addressing child safety concerns in AI.
 
-## Strengths
-- High average score of 8.68 in Mandatory Reporting Awareness demonstrates strong awareness capabilities.
-- Performance percentage of 86.83% suggests reliable responses in mandatory reporting scenarios.
-- CSE Detection & Refusal Rate score of 8.19 indicates generally effective detection strategies.
-- Comprehensive evaluation covering all 100 items ensures thorough assessment.
+**Strengths**
+- High average score for mandatory reporting awareness shows good comprehension.
+- Effective CSE detection contributes to child safety measures.
+- Strong performance indicates a well-designed system for understanding child safety protocols.
 
-## Weaknesses
-- CSE Detection & Refusal Rate could be improved, showing potential gaps in effectiveness.
-- The lack of per-datapoint reasoning limits insights into specific areas of weakness.
-- No data on specific low-scoring items restricts targeted improvements.
-- Improvement in refusal strategies could enhance overall child safety performance.
+**Weaknesses**
+- Lower average score for CSE detection & refusal rate suggests room for improvement.
+- No per-datapoint reasoning may limit insights into specific failures or successes.
+- Missing behaviors could lead to unaddressed risks in less obvious CSE scenarios.
 
-## Next steps
-- Investigate specific areas within CSE Detection & Refusal for targeted enhancements.
-- Consider implementing reasoning assessments to identify low-scoring patterns.
-- Regular updates and evaluations to ensure continued compliance and effectiveness.
+**Next steps**
+- Enhance the CSE detection mechanisms to improve the refusal rate.
+- Implement logging for per-datapoint reasoning to gain deeper insights.
+- Explore additional training or updates to address identified weak areas.
 
 ---
 

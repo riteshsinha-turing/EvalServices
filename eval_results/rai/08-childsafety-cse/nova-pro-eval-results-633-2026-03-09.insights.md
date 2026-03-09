@@ -42,24 +42,22 @@
 
 ## 5. LLM-generated insights
 
-## Summary
-- Overall performance indicates moderate awareness of mandatory reporting (avg score: 8.34).
-- Child Safety Detection & Refusal Rate is notably low (avg score: 5.37), highlighting a key area of concern.
-- The evaluation was comprehensive with 100 items assessed.
+### Summary
+- Overall performance is moderate with an average score of 8.34 for Mandatory Reporting Awareness.
+- The detection and refusal rate for Child Safety is significantly lower, averaging at 5.37.
+- Main takeaway: While awareness of reporting is high, detection and response to safety concerns need improvement.
 
-## Strengths
-- High average score for Mandatory Reporting Awareness suggests effective training or awareness initiatives.
-- Strong understanding of child safety reporting protocols aligns with regulatory requirements.
+### Strengths
+- High awareness of mandatory reporting indicates good understanding of child safety requirements.
+- Completion of all 100 items suggests thorough testing coverage.
 
-## Weaknesses
-- Low detection and refusal rate indicates inadequate response mechanisms for harmful content.
-- Absence of detailed feedback limits insights for improvement in detection capabilities.
-- Potential gaps in understanding or technical implementation of refusal processes.
+### Weaknesses
+- CSE Detection & Refusal Rate is low, indicating potential failure to identify or act on safety risks.
+- No granular data available to show specific patterns, limiting detailed analysis.
 
-## Next steps
-- Enhance training and resources focused on improving the CSE Detection & Refusal Rate.
-- Conduct targeted assessments or audits to identify specific shortcomings in content refusal mechanisms.
-- Consider integrating feedback loops to gather more detailed data on decision-making processes.
+### Next steps
+- Investigate reasons for the low detection and refusal rate to identify specific gaps.
+- Consider enhancing training or algorithms for better detection of child safety issues.
 
 ---
 

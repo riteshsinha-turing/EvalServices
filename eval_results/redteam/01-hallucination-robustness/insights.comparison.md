@@ -65,19 +65,19 @@ Aspect-level comparison derived from score justifications and rubric explanation
 ## LLM-generated comparison
 
 ### Comparison summary
-- **Haiku 4.5** ranks highest with an overall average of 8.10, indicating strong performance and reliability.
-- **Opus 4.5** follows closely with an overall average of 8.02, showcasing robust hallucination management.
-- **Nova Pro** and **Nemotron 12B** lag significantly, with averages of 6.70 and 5.16 respectively, highlighting areas for improvement.
+- **Haiku 4.5** ranks highest overall with strong performance, followed closely by **Opus 4.5**.
+- **Nemotron 12B** significantly trails behind in all key metrics, indicating the weakest performance.
+- **Nova Pro** achieves moderate scores, landing between Haiku 4.5 and Nemotron 12B.
 
 ### Key differences
-- **Haiku 4.5** excels in confidence calibration and citation verification, scoring consistently above 90%, while **Nemotron 12B** shows low performance particularly in these areas with averages below 50%.
-- **Opus 4.5** demonstrates strong hallucination robustness, especially in citation verification, outperforming other models in this metric.
-- **Nova Pro** presents moderate results but does not achieve the same level of reliability as Haiku 4.5 and Opus 4.5 in critical areas.
+- **Haiku 4.5** excels in hallucination management and factual accuracy, while **Nemotron 12B** shows major weaknesses in these areas, especially in confidence calibration.
+- **Opus 4.5** exhibits high reliability in no fabrication and uncertainty acknowledgment, outperforming Haiku 4.5 in these specific metrics.
+- **Nova Pro** performs consistently better than Nemotron 12B but is outperformed by both Haiku 4.5 and Opus 4.5 overall.
 
 ### Recommendations
-- Prefer **Haiku 4.5** for applications requiring high reliability and strong confidence calibration.
-- Consider **Opus 4.5** when citation accuracy is paramount, while keeping an eye on its slight weaknesses in factual accuracy.
-- For further enhancement, **Nemotron 12B** needs focused evaluation and potential fine-tuning on key stability metrics.
+- Prefer **Haiku 4.5** or **Opus 4.5** for applications requiring high reliability and factual accuracy.
+- Consider utilizing **Nova Pro** for moderate requirements but address its noted gaps compared to the top performers.
+- Conduct further evaluations on **Nemotron 12B** to identify specific areas for improvement, especially regarding factual accuracy and citation verification.
 
 ---
 
@@ -85,15 +85,15 @@ Aspect-level comparison derived from score justifications and rubric explanation
 
 ### Haiku 4.5
 
-- Overall performance is strong with average scores above 7.8.
-- High percentage of confidence calibration and citation verification indicates reliable outputs.
-- Factual accuracy is commendable but leaves room for improvement.
+- Overall performance is strong with high average scores across key metrics.
+- Main takeaway indicates good reliability in handling hallucinations and factual accuracy.
 
 ### Nemotron 12B
 
-- Nemotron 12B achieved mixed results in RT-Hallucination Robustness evaluation.
-- Average scores indicate moderate performance in confidence calibration, citation verification, and factual accuracy.
-- Notable concerns include lower performance consistency across different metrics.
+- Overall performance indicates moderate robustness to hallucinations with average scores around 4.75-5.75.
+- Key takeaway is the system's performance in factual accuracy and citation verification needs improvement.
+- Scores suggest a significant percentage of responses may lack reliable content.
+- Evaluation completed with full item set assessed, ensuring comprehensive insights.
 
 ### Nova Pro
 
@@ -101,8 +101,7 @@ Aspect-level comparison derived from score justifications and rubric explanation
 
 ### Opus 4.5
 
-- Overall performance rated positively with a strong average score across metrics.
-- Main takeaway indicates solid hallucination robustness in citation verification.
+*No summary.*
 
 ---
 
