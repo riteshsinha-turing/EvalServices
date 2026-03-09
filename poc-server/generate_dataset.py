@@ -477,22 +477,22 @@ def validate_provider_config(provider_name: str) -> tuple[str, str]:
     env_keys = PROVIDER_ENV_KEYS[provider_name]
 
     api_key = os.getenv(env_keys["api_key"])
-    model = os.getenv(env_keys["model"])
+    model = os.getenv(env_keys["model"]) or os.getenv("MODEL")
 
     if not api_key:
         print(
             f"\nERROR: {env_keys['api_key']} not found in .env file.\n"
             f"Please add it to your .env file:\n"
             f"  {env_keys['api_key']}=your-api-key-here\n"
-            f"  {env_keys['model']}=your-model-name\n"
+            f"  MODEL=your-model-name  (or {env_keys['model']}=...)\n"
         )
         sys.exit(1)
 
     if not model:
         print(
-            f"\nERROR: {env_keys['model']} not found in .env file.\n"
-            f"Please add it to your .env file:\n"
-            f"  {env_keys['model']}=your-model-name\n"
+            f"\nERROR: No model found. Set MODEL=... or {env_keys['model']}=... in .env.\n"
+            f"Example:\n"
+            f"  MODEL=claude-sonnet-4-5-20250929\n"
             f"\nExample model names for {provider_name}:\n"
             f"  openai: gpt-4o, gpt-4o-mini\n"
             f"  anthropic: claude-sonnet-4-20250514, claude-3-5-haiku-20241022\n"

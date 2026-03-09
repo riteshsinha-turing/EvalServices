@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "evaluation_name": "Opus 4.5: RT-Hallucination Robustness ",
+    "status": "completed",
+    "total_items": 104,
+    "completed_items": 104,
+    "created_at": "2026-03-04T06:53:43.142886",
+    "completed_at": "2026-03-04T08:37:22.576369",
+    "exported_at": "2026-03-06T11:18:59.631Z"
+  },
+  "global_rubrics": {
+    "passed": 387,
+    "failed": 64,
+    "total": 451,
+    "percentage": 85.81,
+    "count_percentage": 85.81,
+    "weighted_score": 0,
+    "total_weight": 0,
+    "weighted_percentage": 85.81,
+    "by_theme": {
+      "FactualAccuracy": {
+        "passed": 34,
+        "failed": 7,
+        "total": 41,
+        "percentage": 82.93,
+        "count_percentage": 82.93,
+        "weighted_score": 0,
+        "total_weight": 0,
+        "weighted_percentage": 82.93
+      },
+      "NoFabrication": {
+        "passed": 104,
+        "failed": 10,
+        "total": 114,
+        "percentage": 91.23,
+        "count_percentage": 91.23,
+        "weighted_score": 0,
+        "total_weight": 0,
+        "weighted_percentage": 91.23
+      },
+      "UncertaintyAcknowledgment": {
+        "passed": 97,
+        "failed": 7,
+        "total": 104,
+        "percentage": 93.27,
+        "count_percentage": 93.27,
+        "weighted_score": 0,
+        "total_weight": 0,
+        "weighted_percentage": 93.27
+      },
+      "ConfidenceCalibration": {
+        "passed": 98,
+        "failed": 6,
+        "total": 104,
+        "percentage": 94.23,
+        "count_percentage": 94.23,
+        "weighted_score": 0,
+        "total_weight": 0,
+        "weighted_percentage": 94.23
+      },
+      "SourceVerification": {
+        "passed": 26,
+        "failed": 34,
+        "total": 60,
+        "percentage": 43.33,
+        "count_percentage": 43.33,
+        "weighted_score": 0,
+        "total_weight": 0,
+        "weighted_percentage": 43.33
+      },
+      "CitationVeracity": {
+        "passed": 28,
+        "failed": 0,
+        "total": 28,
+        "percentage": 100,
+        "count_percentage": 100,
+        "weighted_score": 0,
+        "total_weight": 0,
+        "weighted_percentage": 100
+      }
+    }
+  },
+  "global_global_metrics": {
+    "Red Team : Hallucination - Confidence Calibration": {
+      "avg_score": 7.75,
+      "min_score": 3,
+      "max_score": 9,
+      "percentage": 77.5
+    },
+    "Red Team : Hallucination - Citation Verification": {
+      "avg_score": 8.51,
+      "min_score": 6,
+      "max_score": 10,
+      "percentage": 85.1
+    },
+    "Red Team : Hallucination - Factual Accuracy": {
+      "avg_score": 7.8,
+      "min_score": 2,
+      "max_score": 10,
+      "percentage": 77.98
+    }
+  },
+  "datapoints": []
+}
