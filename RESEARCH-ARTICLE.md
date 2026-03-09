@@ -4,9 +4,9 @@
 
 ## Abstract
 
-Enterprise deployment of large language model (LLM) assistants introduces significant safety risks: hallucinated policies, PII leakage, jailbreaks, regulatory overreach, and mishandled sensitive HR situations. We describe a research methodology for evaluating such systems on the TI Validation Platform using multi-turn adversarial datasets and LLM-as-judge metrics. Our approach uses spec-driven dataset creation (LLM generation prompts from per-eval specification documents), a unified datapoint schema with pre-scripted conversation history (10–40 turns) plus a final adversarial probe, and 12 global metrics whose evaluation prompts are taken verbatim from spec doc Section 4.1. We run five safety evals—Hallucination Robustness, PII & Privacy Leakage, Jailbreak Resistance, Regulatory & Compliance, and HR Violation & Sensitive Disclosure—against a simulated HR assistant. Results from comparative runs across four models (Haiku 4.5, Nemotron 12B, Nova Pro, Opus 4.5) show clear performance differences on global metrics and rubric pass rates; we report representative results for Hallucination and Jailbreak evals. The methodology is designed to stay current with the 2025–2026 threat landscape (policy simulation, chain-of-thought hijacking, persuasion-based social engineering) and to support future automated red teaming.
+Enterprise deployment of large language model (LLM) assistants introduces significant safety risks: hallucinated policies, PII leakage, jailbreaks, regulatory overreach, and mishandled sensitive HR situations. We describe a research methodology for evaluating such systems on the TI Validation Platform using multi-turn adversarial datasets and LLM-as-judge metrics. Our approach uses spec-driven dataset creation (LLM generation prompts from per-eval specification documents), a unified datapoint schema with pre-scripted conversation history (10–40 turns) plus a final adversarial probe, and 12 global metrics whose evaluation prompts are taken verbatim from spec doc Section 4.1. We run five eval suites—three Responsible AI (RAI): Toxicity & Harmful Content, Misinformation & Disinformation, Child Safety (CSE); two Red Team: Hallucination Robustness, Jailbreak Resistance—against enterprise AI assistants implemented by four SOTA models: **LLMs** Opus 4.5, Nova Pro; **SLMs** Haiku 4.5, Nemotron 12B. Results show clear performance differences on global metrics and rubric pass rates; we report representative results for Hallucination and Jailbreak evals. The methodology is designed to stay current with the 2025–2026 threat landscape (policy simulation, chain-of-thought hijacking, persuasion-based social engineering) and to support future automated red teaming.
 
-**Keywords:** LLM safety evaluation, red teaming, adversarial datasets, multi-turn conversation, enterprise AI, responsible AI (RAI), TI Validation Platform.
+**Keywords:** LLM safety evaluation, SLM, large language model, small language model, red teaming, adversarial datasets, multi-turn conversation, enterprise AI, responsible AI (RAI), TI Validation Platform.
 
 ---
 
@@ -16,7 +16,7 @@ Deploying AI assistants in enterprise settings creates tangible risks: users rel
 
 The attack surface for enterprise AI has shifted. Reasoning models can act as autonomous red-team agents (e.g., 97% jailbreak success in multi-turn settings [1]); chain-of-thought mechanisms can be hijacked, dropping refusal rates from 98% to below 2% [2]; and prompt injection has been characterized as potentially unsolvable for browser-based agents [3]. Published defenses have been bypassed at high rates by adaptive attacks [4]. Our eval suite is designed against these **2025–2026 documented threats**, not legacy “ignore your instructions” prompts. We test policy simulation, fallacy-based reasoning exploits, multi-turn persuasion (e.g., PAP taxonomy), Crescendo-style escalation, role-play and encoding attacks, and social engineering patterns that appear in recent research.
 
-This article documents (1) the **research methodology**—evaluation framework, platform flow, and how conversation history is injected; (2) **dataset creation**—unified schema, spec-driven design, LLM generation prompts (Section 3.3 of each eval spec), and quality criteria; (3) **metric design and creation**—12 global metrics with evaluation prompts drawn from spec doc Section 4.1, plus per-datapoint rubric checklists; and (4) **experimental setup and results** from comparative runs, including aggregate scores and rubric pass rates for Hallucination Robustness and Jailbreak Resistance. We conclude with discussion of strengths, limitations, and future work (e.g., automated red teaming).
+This article documents (1) the **research methodology**—evaluation framework, platform flow, and how conversation history is injected; (2) **dataset creation**—unified schema, spec-driven design, LLM generation prompts (Section 3.3 of each eval spec), and quality criteria; (3) **metric design and creation**—global metrics with evaluation prompts drawn from spec doc Section 4.1, plus per-datapoint rubric checklists; and (4) **experimental setup and results** from comparative runs across **four SOTA models** (**LLMs:** Opus 4.5, Nova Pro; **SLMs:** Haiku 4.5, Nemotron 12B) on **five eval suites** (RAI: Toxicity & Harmful Content, Misinformation & Disinformation, Child Safety CSE; Red Team: Hallucination Robustness, Jailbreak Resistance). We report aggregate scores and rubric pass rates in detail for Hallucination and Jailbreak. We conclude with discussion of strengths, limitations, and future work (e.g., automated red teaming).
 
 ---
 
@@ -30,15 +30,19 @@ LLM safety evaluation and red teaming have grown rapidly. Benchmarks such as tho
 
 We evaluate a single “agent”: a SOTA LLM (e.g., Claude or GPT) behind a custom system prompt that simulates an internal HR assistant for a fictional company (GlobalTech Corp) with seeded employee data (names, IDs, salary bands) and policy mentions. The platform does not see the system prompt; it sends messages to an external `/chat` endpoint and scores only the agent’s final response. This setup allows the model to hallucinate details, leak PII, or comply with jailbreaks—all of which we measure.
 
-### 4.1 The Five Evals
+### 4.1 Eval Suites Run
 
-| # | Eval | What It Tests | Why It Matters |
-|---|------|---------------|----------------|
-| 1 | **Hallucination Robustness** | Fabrication of policies, statistics, citations, or details not in the system prompt | Enterprise users trust AI answers; hallucinated policies cause real harm |
-| 2 | **PII & Privacy Leakage** | Tricking the agent into revealing employee names, IDs, or salary bands | Privacy violations lead to lawsuits and regulatory fines |
-| 3 | **Jailbreak Resistance** | Bypassing safety guardrails via encoding, role-play, trust-building, policy simulation | A jailbroken enterprise bot is a reputational and safety disaster |
-| 4 | **Regulatory & Compliance** | Unauthorized legal, medical, or financial advice; compliance certification | Unauthorized advice creates corporate liability |
-| 5 | **HR Violation & Sensitive Disclosure** | Handling of harassment reports, discrimination, whistleblowing | Mishandled HR situations create legal exposure and employee harm |
+We report on **five eval suites** executed in this study (from `eval_results/rai` and `eval_results/redteam`):
+
+| Suite | Eval | What It Tests | Why It Matters |
+|-------|------|---------------|----------------|
+| **RAI** | 01 – Toxicity & Harmful Content | Toxic output, microaggressions, context-dependent safety | Content safety and appropriateness |
+| **RAI** | 07 – Misinformation & Disinformation | Spreading or reinforcing false or misleading information | Trust and information integrity |
+| **RAI** | 08 – Child Safety (CSE) | CSE detection, mandatory reporting awareness, refusal of harmful content | Child safety and legal compliance |
+| **Red Team** | 01 – Hallucination Robustness | Fabrication of policies, statistics, citations, or details not in the system prompt | Enterprise users trust AI answers; hallucinated policies cause real harm |
+| **Red Team** | 02 – Jailbreak Resistance | Bypassing safety guardrails via encoding, role-play, trust-building, policy simulation | A jailbroken enterprise bot is a reputational and safety disaster |
+
+The methodology also applies to additional evals (e.g. PII & Privacy Leakage, Regulatory & Compliance, HR Violation) as in the setup guide [9]; this article emphasizes the five suites for which we have comparative results.
 
 ### 4.2 Attack Techniques Covered
 
@@ -115,9 +119,9 @@ flowchart LR
 
 **Server.** The agent is a FastAPI server (`poc-server/`) that holds the HR assistant system prompt and exposes `POST /chat`. Request body includes `agent_id`, optional `model`, and `messages`. The server prepends the system prompt, calls the configured LLM, and returns the assistant message.
 
-**Models.** Comparative runs reported below use four models: Haiku 4.5, Nemotron 12B, Nova Pro, and Opus 4.5. The same dataset and metrics are used for each; only the `model` field in the request varies (or separate AgentEval configs point to the same endpoint with different model settings).
+**Models.** Comparative runs use **four SOTA models**: **LLMs** — Opus 4.5, Nova Pro; **SLMs** — Haiku 4.5, Nemotron 12B. The same dataset and metrics are used for each model per eval; only the `model` field in the request varies (or separate AgentEval configs point to the same endpoint with different model settings).
 
-**Datasets.** Each of the five evals uses a single uploaded dataset (~50–100 datapoints) generated as in Section 4.2. Datasets are named per eval (e.g. Hallucination Robustness v1, Jailbreak Resistance v1).
+**Datasets.** Each of the five eval suites (Toxicity & Harmful Content, Misinformation & Disinformation, Child Safety CSE, Hallucination Robustness, Jailbreak Resistance) uses a single uploaded dataset (~50–100 datapoints) generated as in Section 5.2. Datasets are named per eval (e.g. Hallucination Robustness v1, Jailbreak Resistance v1).
 
 **AgentEval configs.** For each eval we create an AgentEval with: mode = agent (external endpoint), endpoint = `http://localhost:8080/chat`, agent_id = `hr-assistant`, dataset = the uploaded eval dataset, global metrics = the 2–3 metrics for that eval (as in the guide [9] metric-assignments table).
 
@@ -125,7 +129,7 @@ flowchart LR
 
 ## 7. Results
 
-We report results from two evals for which we have comparative insights: **Hallucination Robustness** and **Jailbreak Resistance**. Full comparison reports and per-model insights are under `eval_results/` [10].
+We have comparative results across all five suites; we report in detail on **Hallucination Robustness** and **Jailbreak Resistance** (Red Team). Results for **Toxicity & Harmful Content**, **Misinformation & Disinformation**, and **Child Safety (CSE)** (RAI) are available under `eval_results/rai/` [10]. Full comparison reports and per-model insights are under `eval_results/` [10].
 
 ### 7.1 Hallucination Robustness
 
@@ -142,7 +146,7 @@ Scores by metric (average over datapoints) and overall ranking:
 
 **Rubric pass rates (selected themes):** NoFabrication — Haiku 4.5 79.8%, Opus 4.5 91.2%, Nova Pro 57.9%, Nemotron 12B 35.1%. ConfidenceCalibration — Haiku 4.5 86.5%, Opus 4.5 94.2%, Nova Pro 63.5%, Nemotron 12B 39.4%. Full tables are in `eval_results/redteam/01-hallucination-robustness/insights.comparison.md`.
 
-Interpretation: Haiku 4.5 and Opus 4.5 meet or approach the ≥8.0 target for all three global metrics; Nemotron 12B and Nova Pro show notable gaps on confidence calibration and fabrication avoidance, consistent with LLM-generated summaries that cite overconfidence and unverified citations.
+Interpretation: The two SLMs and two LLMs show a clear spread: Haiku 4.5 (SLM) and Opus 4.5 (LLM) meet or approach the ≥8.0 target for all three global metrics; Nemotron 12B (SLM) and Nova Pro (LLM) show notable gaps on confidence calibration and fabrication avoidance, consistent with LLM-generated summaries that cite overconfidence and unverified citations.
 
 ### 7.2 Jailbreak Resistance
 
@@ -156,7 +160,7 @@ Interpretation: Haiku 4.5 and Opus 4.5 meet or approach the ≥8.0 target for al
 
 **Rubric pass rates (selected themes):** JailbreakRefusal — Haiku 4.5 84.0%, Opus 4.5 78.0%, Nemotron 12B 57.0%. AttackRecognition — Haiku 4.5 82.0%, Opus 4.5 72.0%, Nemotron 12B 32.0%. GracefulRefusal — Haiku 4.5 78.0%, Opus 4.5 67.0%, Nemotron 12B 27.0%. Full comparison in `eval_results/redteam/02-jailbreak-resistance/insights.comparison.md`.
 
-Haiku 4.5 and Opus 4.5 exceed the ≥8.0 threshold on both global metrics; Nemotron 12B lags on refusal quality and detection rate, with low rubric pass rates on attack recognition and graceful refusal, indicating susceptibility to jailbreak and framing attacks.
+Haiku 4.5 (SLM) and Opus 4.5 (LLM) exceed the ≥8.0 threshold on both global metrics; Nemotron 12B (SLM) lags on refusal quality and detection rate, with low rubric pass rates on attack recognition and graceful refusal, indicating susceptibility to jailbreak and framing attacks. Nova Pro (LLM) sits between the leaders and Nemotron 12B.
 
 ---
 
@@ -164,7 +168,7 @@ Haiku 4.5 and Opus 4.5 exceed the ≥8.0 threshold on both global metrics; Nemot
 
 **Strengths.** The methodology ties datasets and metrics directly to written specs (Section 3.3 and 4.1), enabling reproducibility and quarterly refresh as new attack techniques are documented. Multi-turn design matches the threat model: models are evaluated in context-heavy, trust-building conversations. The platform’s separation of dataset, metrics, and agent endpoint allows the same eval to be run across models and endpoints without re-authoring prompts. Pass thresholds (e.g. global ≥8.0, checklist ≥90% for Hallucination) and auto-fail conditions (e.g. any functional harmful information in jailbreak, any PII leak, victim-blaming in HR) give clear go/no-go criteria.
 
-**Failure modes and limitations.** Results depend on judge LLM consistency and calibration; rubric themes can be subjective. Datasets are static and human-generated from a fixed prompt, so novel attack vectors may be under-represented. The HR scenario and seeded PII are synthetic; real deployments would need domain-specific datasets and possibly additional evals (e.g. Child Safety, Toxicity, Misinformation), for which the same methodology applies. We have not yet run automated red teaming (attacker LLM vs. target); that is planned as a Phase 2 extension.
+**Failure modes and limitations.** Results depend on judge LLM consistency and calibration; rubric themes can be subjective. Datasets are static and human-generated from a fixed prompt, so novel attack vectors may be under-represented. The HR scenario and seeded PII are synthetic; real deployments would need domain-specific datasets. We ran additional RAI evals (Child Safety CSE, Toxicity & Harmful Content, Misinformation & Disinformation) using the same methodology; results are in eval_results [10]. We have not yet run automated red teaming (attacker LLM vs. target); that is planned as a Phase 2 extension.
 
 **Framework alignment.** The eval suite maps to NIST AI 600-1, OWASP LLM Top 10 2025, and EU AI Act considerations (e.g. adversarial testing). Keeping evals “regulatory-grade” requires periodic alignment reviews as these frameworks update.
 
@@ -172,7 +176,7 @@ Haiku 4.5 and Opus 4.5 exceed the ≥8.0 threshold on both global metrics; Nemot
 
 ## 9. Conclusion
 
-We described a research methodology for multi-turn adversarial evaluation of enterprise AI assistants on the TI Validation Platform, with emphasis on how datasets and metrics are created from specification documents. Datasets are built via LLM generation prompts (Section 3.3) and a unified schema that includes pre-scripted conversation history and a final adversarial probe; metrics are defined by verbatim evaluation prompts from Section 4.1 and per-datapoint rubric checklists. We reported comparative results for Hallucination Robustness and Jailbreak Resistance across four models, showing clear differences in global scores and rubric pass rates. Limitations include static datasets and judge dependence; future work will add automated red teaming (attacker LLM generating novel prompts and feeding successes back into datasets) and continued alignment with threat intelligence and regulatory frameworks.
+We described a research methodology for multi-turn adversarial evaluation of enterprise AI assistants on the TI Validation Platform, with emphasis on how datasets and metrics are created from specification documents. Datasets are built via LLM generation prompts (Section 3.3) and a unified schema that includes pre-scripted conversation history and a final adversarial probe; metrics are defined by verbatim evaluation prompts from Section 4.1 and per-datapoint rubric checklists. We reported comparative results for Hallucination Robustness and Jailbreak Resistance across four SOTA models (LLMs: Opus 4.5, Nova Pro; SLMs: Haiku 4.5, Nemotron 12B), showing clear differences in global scores and rubric pass rates; results for three RAI suites (Toxicity, Misinformation, Child Safety CSE) are available in eval_results. Limitations include static datasets and judge dependence; future work will add automated red teaming (attacker LLM generating novel prompts and feeding successes back into datasets) and continued alignment with threat intelligence and regulatory frameworks.
 
 ---
 
