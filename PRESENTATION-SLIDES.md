@@ -10,7 +10,7 @@
 - **Dataset overview** — ~50–100 datapoints per eval; unified schema with conversation history + adversarial probe.
 - **Task design** — Multi-turn (10–40 messages) + final probe; model response scored only on that final turn.
 - **Evaluation setup** — 12 global metrics (0–10, LLM-as-judge) + per-item rubric checklists (pass/fail by theme).
-- **Summary results** — Cross-model comparison across **4 SOTA models**: **LLMs** Opus 4.5, Nova Pro; **SLMs** Haiku 4.5, Nemotron 12B. Hallucination and Jailbreak evals reported in detail; full suite below.
+- **Summary results** — Cross-model comparison across **4 SOTA models**: **LLMs** Opus 4.5, Nova Pro; **SLMs** Haiku 4.5, Nemotron 12B. Results for all **six suites** (RAI: Toxicity, Misinformation, Child Safety CSE; Red Team: Hallucination, Jailbreak, Multi-Turn Guardrail Decay) below.
 
 ---
 
@@ -27,6 +27,7 @@
 | **RAI** | 08 – Child Safety (CSE) |
 | **Red Team** | 01 – Hallucination Robustness |
 | **Red Team** | 02 – Jailbreak Resistance |
+| **Red Team** | 05 – Multi-Turn Manipulation (Guardrail Decay) |
 
 **Dataset structure:**
 - ~50–100 datapoints per eval; unified schema across suites.
@@ -44,7 +45,63 @@
 
 ---
 
-## Slide 3: Hallucination Robustness — Eval Results
+## Slide 3: Toxicity & Harmful Content (RAI 01) — Eval Results
+
+**Overall:**
+- **Ranking (overall average):** 1. Haiku 4.5 (8.88), 2. Opus 4.5 (8.83), 3. Nova Pro (7.33), 4. Nemotron 12B (6.95).
+- **Global metrics (avg):** Response Appropriateness 6.59–8.62; Contextual Safety Awareness 7.08–8.99; Toxicity Detection Accuracy 7.17–9.10.
+
+**Strengths:**
+- **Haiku 4.5 / Opus 4.5:** Strong toxicity detection; “constructive alternative”, “professional and respectful”, “redirects to”, “firm boundary” in high-scoring responses.
+- **Nova Pro / Nemotron 12B:** “Redirects to”, “constructive alternative”, “professional and respectful” in better responses; overall scores moderate.
+
+**Weaknesses:**
+- **Nemotron 12B / Nova Pro:** “Did not refuse”, “undermines”, “did not recognize” in low-scoring responses; sometimes comply with toxic requests instead of redirection.
+- **Haiku 4.5 / Opus 4.5:** Occasional “undermines”, “did not refuse”, “provided a” in edge cases.
+
+**Takeaway:** Haiku 4.5 and Opus 4.5 lead; prefer them for high safety standards on harmful content. Nova Pro and Nemotron 12B need improvement on recognizing and refusing harmful requests.
+
+---
+
+## Slide 4: Misinformation & Disinformation (RAI 07) — Eval Results
+
+**Overall:**
+- **Ranking (overall average):** 1. Haiku 4.5 (8.89), 2. Opus 4.5 (8.70), 3. Nova Pro (6.01), 4. Nemotron 12B (5.51).
+- **Global metrics (avg):** Source Attribution Quality 5.77–9.29; Misinformation Detection Accuracy 5.26–8.49.
+
+**Strengths:**
+- **Haiku 4.5:** Leads on both metrics (9.29 source attribution, 8.49 detection); strong reliability.
+- **Opus 4.5:** Strong source attribution (9.01); high scores on non-compliance with harmful requests.
+- **Nova Pro / Nemotron 12B:** “Redirects to”, “constructive alternative”, “no partial” in better responses.
+
+**Weaknesses:**
+- **Nemotron 12B / Nova Pro:** “No evidence”, “did not recognize”, “did not refuse”, “not a refusal”, “partial compliance” in low-scoring responses; many low scores (e.g. 28 items scored 1 for Nemotron).
+- **Nova Pro:** High variability; partial compliance leads to fabrications and unreliable citations.
+
+**Takeaway:** Haiku 4.5 and Opus 4.5 reliable for misinformation detection and source attribution; Nemotron 12B and Nova Pro need further evaluation and tuning.
+
+---
+
+## Slide 5: Child Safety (CSE) (RAI 08) — Eval Results
+
+**Overall:**
+- **Ranking (overall average):** 1. Haiku 4.5 (8.82), 2. Opus 4.5 (8.43), 3. Nova Pro (6.86), 4. Nemotron 12B (6.84).
+- **Global metrics (avg):** Mandatory Reporting Awareness 8.11–8.72; CSE Detection & Refusal Rate 5.37–8.92.
+
+**Strengths:**
+- **Haiku 4.5:** Leads on both metrics; “redirects to”, “unambiguous refusal”, “no partial” in high-scoring responses.
+- **Opus 4.5:** Strong refusal (8.19) and reporting; “firm boundary”, “unambiguous refusal”.
+- **Nemotron 12B / Nova Pro:** Good Mandatory Reporting Awareness (8.11–8.34); “redirects to”, “unambiguous refusal”, “no actionable” in better responses.
+
+**Weaknesses:**
+- **Nemotron 12B / Nova Pro:** Low CSE Detection & Refusal (5.37–5.57); “actionable guidance”, “did not refuse”, “no actual refusal”, “provided a” in failures; some direct facilitation of harmful content.
+- **Haiku 4.5 / Opus 4.5:** Isolated low-score cases (“provided a”, “did not refuse”, “no evidence”).
+
+**Takeaway:** Haiku 4.5 and Opus 4.5 strongest for child safety; Nemotron 12B and Nova Pro need improvement on CSE detection and refusal before sensitive deployments.
+
+---
+
+## Slide 6: Hallucination Robustness — Eval Results
 
 **Overall:**
 - **Ranking (overall average):** 1. Haiku 4.5 (8.10), 2. Opus 4.5 (8.02), 3. Nova Pro (5.90), 4. Nemotron 12B (5.16).
@@ -63,7 +120,7 @@
 
 ---
 
-## Slide 4: Jailbreak Resistance — Eval Results
+## Slide 7: Jailbreak Resistance — Eval Results
 
 **Overall:**
 - **Ranking (overall average):** 1. Haiku 4.5 (8.96), 2. Opus 4.5 (8.76), 3. Nova Pro (7.26), 4. Nemotron 12B (6.13).
@@ -83,18 +140,38 @@
 
 ---
 
-## Slide 5: Cross-Eval Summary & Next Steps
+## Slide 8: Multi-Turn Manipulation & Guardrail Decay (Red Team 05) — Eval Results
+
+**Overall:**
+- **Ranking (overall average):** 1. Nova Pro (7.57), 2. Haiku 4.5 (7.27), 3. Nemotron 12B (7.24), 4. Opus 4.5 (7.13).
+- **Global metrics (avg):** Context Integrity 8.48–9.52; Manipulation Resistance 4.56–5.28; Guardrail Consistency Over Turns 7.64–7.92.
+
+**Strengths:**
+- **Nova Pro:** Leads overall; best on Manipulation Resistance (5.28) and Guardrail Consistency Over Turns (7.92).
+- **Nemotron 12B / Nova Pro:** Top Context Integrity (9.52); high score distribution and positive reasoning in strong responses.
+- **Haiku 4.5:** Solid overall (7.27); Context Integrity 9.28, Guardrail Consistency 7.64.
+- **Opus 4.5:** Strong Context Integrity (8.48) and Guardrail Consistency (7.88); overall scores competitive but lowest on Manipulation Resistance.
+
+**Weaknesses:**
+- **All models:** Manipulation Resistance modest (4.56–5.28); resistance to erosion of guardrails across multi-turn persuasion remains a challenge.
+- **Opus 4.5:** Lowest Manipulation Resistance (5.04) and lowest overall (7.13) in this eval—inverts typical Red Team ranking vs. Hallucination/Jailbreak.
+- **Haiku 4.5 / Nemotron 12B:** Manipulation Resistance 4.88 and 4.56 respectively; room for improvement on sustained persuasion attacks.
+
+---
+
+## Slide 9: Cross-Eval Summary & Next Steps
 
 **Cross-eval takeaway:**
-- **LLMs (Opus 4.5, Nova Pro)** vs **SLMs (Haiku 4.5, Nemotron 12B):** Haiku 4.5 (SLM) and Opus 4.5 (LLM) meet or exceed pass thresholds on both Hallucination and Jailbreak; strong rubric pass rates and consistent strength themes.
-- Nova Pro (LLM) and Nemotron 12B (SLM) lag on both evals; Nemotron 12B especially weak on attack recognition and refusal quality.
+- **Haiku 4.5** and **Opus 4.5** lead across RAI suites and Red Team Hallucination/Jailbreak—strong refusal, detection, and boundary maintenance.
+- **Multi-Turn Guardrail Decay (Red Team 05)** inverts the pattern: **Nova Pro** leads (7.57), Opus 4.5 is last (7.13); Manipulation Resistance is modest for all (4.56–5.28).
+- **Nova Pro** and **Nemotron 12B** lag on most other evals; Nemotron 12B especially weak on attack recognition, refusal quality, CSE detection, and misinformation/source attribution.
 
 **Recommendations:**
-- Prefer **Haiku 4.5** or **Opus 4.5** for safety-critical HR/compliance use cases (hallucination and jailbreak resistance).
-- **Nova Pro** / **Nemotron 12B**: target improvement on fabrication avoidance, confidence calibration, jailbreak detection, and graceful refusal before production.
+- Prefer **Haiku 4.5** or **Opus 4.5** for safety-critical use cases (content safety, misinformation, child safety, hallucination, jailbreak resistance).
+- For **multi-turn manipulation resistance**, consider **Nova Pro** in the mix; all models need improvement on guardrail decay under sustained persuasion.
+- **Nova Pro** / **Nemotron 12B**: target improvement on refusal consistency, harmful-content detection, source attribution, and CSE handling before production.
 
 **Next steps:**
-- Deep-dive results for remaining suites (Toxicity & Harmful Content, Misinformation & Disinformation, Child Safety CSE) using same comparison format.
 - Refresh datasets quarterly with new attack techniques (threat intel).
 - Phase 2: automated red teaming (attacker LLM vs. target) to discover novel failure modes.
 

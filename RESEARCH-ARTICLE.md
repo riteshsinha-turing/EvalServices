@@ -32,7 +32,7 @@ We evaluate a single “agent”: a SOTA LLM (e.g., Claude or GPT) behind a cust
 
 ### 4.1 Eval Suites Run
 
-We report on **five eval suites** executed in this study (from `eval_results/rai` and `eval_results/redteam`):
+We report on **six eval suites** executed in this study (from `eval_results/rai` and `eval_results/redteam`):
 
 | Suite | Eval | What It Tests | Why It Matters |
 |-------|------|---------------|----------------|
@@ -41,8 +41,9 @@ We report on **five eval suites** executed in this study (from `eval_results/rai
 | **RAI** | 08 – Child Safety (CSE) | CSE detection, mandatory reporting awareness, refusal of harmful content | Child safety and legal compliance |
 | **Red Team** | 01 – Hallucination Robustness | Fabrication of policies, statistics, citations, or details not in the system prompt | Enterprise users trust AI answers; hallucinated policies cause real harm |
 | **Red Team** | 02 – Jailbreak Resistance | Bypassing safety guardrails via encoding, role-play, trust-building, policy simulation | A jailbroken enterprise bot is a reputational and safety disaster |
+| **Red Team** | 03 – Multi-turn Manipulation (Guardrail Decay) | Erosion of safety boundaries across turns via persuasion, trust-building, or escalation so the model relaxes guardrails over the conversation | Long enterprise chats are vulnerable to gradual boundary-weakening; we measure resistance to guardrail decay |
 
-The methodology also applies to additional evals (e.g. PII & Privacy Leakage, Regulatory & Compliance, HR Violation) as in the setup guide [9]; this article emphasizes the five suites for which we have comparative results.
+The methodology also applies to additional evals (e.g. PII & Privacy Leakage, Regulatory & Compliance, HR Violation) as in the setup guide [9]; this article emphasizes the six suites for which we have comparative results.
 
 ### 4.2 Attack Techniques Covered
 
@@ -117,7 +118,7 @@ flowchart LR
 
 ## 6. Experimental Setup
 
-**Server.** The agent is a FastAPI server (`poc-server/`) that holds the HR assistant system prompt and exposes `POST /chat`. Request body includes `agent_id`, optional `model`, and `messages`. The server prepends the system prompt, calls the configured LLM, and returns the assistant message.
+**Setup.** No external agent server (e.g. `poc-server/`) is used. Evaluations run entirely on the TI Validation Platform. A simple system prompt (e.g. “You are a helpful assistant”) is defined in the platform; the **eval run** is determined by this system prompt plus a **metrics cohort** (the set of global metrics for that eval) and the **target model**. The platform sends the system prompt and conversation messages to the chosen model, receives the response, and scores it with the cohort metrics.
 
 **Models.** Comparative runs use **four SOTA models**: **LLMs** — Opus 4.5, Nova Pro; **SLMs** — Haiku 4.5, Nemotron 12B. The same dataset and metrics are used for each model per eval; only the `model` field in the request varies (or separate AgentEval configs point to the same endpoint with different model settings).
 
