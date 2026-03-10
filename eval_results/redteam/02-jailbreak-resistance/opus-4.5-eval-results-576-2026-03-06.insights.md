@@ -119,30 +119,28 @@ Pass/fail by rubric theme (from evaluator checklist):
 
 ## 5. LLM-generated insights
 
-```markdown
-**Summary**
-- Overall performance is strong, with high refusal quality (average score 8.31) and detection rate (average score 9.21).
-- 83.1% of refusals were clear and direct, indicating effective boundary maintenance.
-- High scores reflect ability to recognize and refuse clear jailbreak attempts.
-- Notable gaps remain in recognizing fictional framing for harmful requests.
+### Summary
+- Overall performance is strong in both jailbreak refusal quality and detection rate.
+- The average refusal quality score is 8.31, indicating proficient boundary maintenance.
+- High detection rate at 92.1% shows effective identification of jailbreak attempts.
+- Notable gaps exist in handling nuanced or framed queries.
 
-**Strengths**
-- Agents effectively refuse requests that pose clear risks, maintaining a calm and respectful tone.
-- Consistent high detection rates for malignant intent in direct inquiries.
-- Many refusals demonstrate unambiguous boundaries without hedging.
-- Clear explanations provided in refusals enhance user understanding of decisions.
+### Strengths
+- Clear and direct refusals for obvious jailbreak requests are well-executed.
+- Responses maintain a respectful tone, reinforcing the agent's integrity.
+- High detection rates indicate strong awareness of harmful intents in queries.
+- Most high scores stem from well-defined scenarios that align with safety policies.
 
-**Weaknesses**
-- Several agents failed to recognize requests disguised as fictional scenarios, leading to enabling responses.
-- Low scores were noted for responses involving phishing and torture methods that were not refused.
-- Inconsistent detection of subtle jailbreak attempts suggests room for improvement in nuanced understanding.
-- A few refusals exhibited slight moralizing language, which could detract from clarity.
+### Weaknesses
+- Low scores often result from failure to recognize disguised or framed jailbreak attempts.
+- Instances of enabling behavior occurred when the agent misinterpreted the intent.
+- A few responses provided explicit harmful instructions due to poor context comprehension.
+- Lack of consistent boundary enforcement when faced with creative query framing.
 
-**Next steps**
-- Enhance training for agents on recognizing and responding to fictional framing in potentially harmful queries.
-- Review and refine refusal strategies to minimize moralizing tones while maintaining strong boundaries.
-- Conduct targeted evaluations on borderline cases to improve nuanced detection capabilities.
-```
+### Next steps
+- Enhance model training on identifying nuanced or indirect jailbreak requests.
+- Review and adjust response policies to reinforce refusal across more complex scenarios.
+- Implement additional evaluation scenarios focusing on framed requests to improve detection.
 
 ---
 

@@ -16,9 +16,11 @@ Usage:
   # Compare multiple insight reports (same eval, different models):
   python scripts/generate_eval_insights.py compare file1.insights.md file2.insights.md -o dir/insights.comparison.md
   python scripts/generate_eval_insights.py compare file1.insights.md file2.insights.md -o dir/insights.comparison.md --llm
+  python scripts/generate_eval_insights.py compare *.insights.md -o insights.comparison.md --llm-summaries   # LLM-generated summary per model (no parsing)
 
-LLM analysis (--llm):
+LLM analysis (--llm, --llm-summaries):
   Set OPENAI_API_KEY or ANTHROPIC_API_KEY in the environment. Use --provider to choose.
+  --llm-summaries: ask the LLM to write a short summary per report for the comparison (avoids parsing section 5).
 """
 
 import argparse
@@ -359,6 +361,37 @@ def fetch_llm_comparison(parsed_list: list[dict], provider: str, model: str) -> 
     if provider == "anthropic":
         return call_anthropic(prompt, model, api_key.strip())
     raise ValueError(f"Unknown provider: {provider}")
+
+
+def fetch_llm_report_summary(insight_text: str, provider: str, model: str, max_chars: int = 12000) -> str:
+    """
+    Ask the LLM for a short 2-4 bullet summary of a single eval insights report.
+    Uses the report markdown (truncated to max_chars) so format is irrelevant. Returns trimmed summary text.
+    """
+    excerpt = (insight_text or "").strip()[:max_chars]
+    if len((insight_text or "").strip()) > max_chars:
+        excerpt += "\n\n[... report truncated ...]"
+    prompt = (
+        "You are an expert at summarizing AI evaluation reports.\n\n"
+        "Below is an evaluation insights report (scores, metrics, strengths/weaknesses). "
+        "Write a short summary for a comparison document: 2-4 bullet points only, one line per bullet. "
+        "Cover: overall performance, main strength, main weakness or takeaway. Be concise.\n\n"
+        "Output only the bullet list (e.g. \"- ...\\n- ...\"), no heading or preamble.\n\n"
+        "---\n\n"
+        + excerpt
+    )
+    api_key = os.environ.get("OPENAI_API_KEY") if provider == "openai" else os.environ.get("ANTHROPIC_API_KEY")
+    if not (api_key and api_key.strip()):
+        raise RuntimeError(
+            "Missing API key: set OPENAI_API_KEY or ANTHROPIC_API_KEY for --llm-summaries"
+        )
+    if provider == "openai":
+        out = call_openai(prompt, model, api_key.strip())
+    elif provider == "anthropic":
+        out = call_anthropic(prompt, model, api_key.strip())
+    else:
+        raise ValueError(f"Unknown provider: {provider}")
+    return (out or "").strip()
 
 
 def count_phrase_matches(text: str, phrases: list[str]) -> int:
@@ -729,10 +762,15 @@ def parse_insights_file(path: Path) -> dict:
                 out["weaknesses"].append(line[2:].strip())
 
     # Optional: extract first paragraph of "## 5. LLM-generated insights" -> Summary
+    # LLM output may use "## Summary", "### Summary", or "**Summary**" (bold); sometimes inside ```markdown
     section5 = re.search(r"## 5\. LLM-generated insights\s*\n+(.*?)(?=\n## |\n##|\Z)", text, re.DOTALL)
     if section5:
         block = section5.group(1).strip()
-        summary_m = re.search(r"### Summary\s*\n+(.*?)(?=\n### |\n## |\Z)", block, re.DOTALL)
+        summary_m = re.search(r"## Summary\s*\n+(.*?)(?=\n## |\Z)", block, re.DOTALL)
+        if not summary_m:
+            summary_m = re.search(r"### Summary\s*\n+(.*?)(?=\n### |\n## |\Z)", block, re.DOTALL)
+        if not summary_m:
+            summary_m = re.search(r"\*\*Summary\*\*\s*\n+(.*?)(?=\n\*\*|\n## |\n### |\n```|\Z)", block, re.DOTALL)
         if summary_m:
             out["llm_summary"] = summary_m.group(1).strip().split("\n\n")[0][:500]
 
@@ -888,14 +926,18 @@ def build_comparison_report(parsed_list: list[dict], llm_comparison: str | None 
         lines.append("---")
         lines.append("")
 
-    # Optional: short LLM summary snippets from individual reports
-    has_llm = any(p.get("llm_summary") for p in parsed_list)
-    if has_llm:
+    # Model summaries: prefer LLM-generated (--llm-summaries), else parsed from report
+    def _summary_for(p: dict) -> str:
+        s = (p.get("generated_summary") or p.get("llm_summary") or "").strip()
+        return s or "*No summary.*"
+
+    has_any_summary = any(_summary_for(p) != "*No summary.*" for p in parsed_list)
+    if has_any_summary or parsed_list:
         lines.append("## Model summaries (from individual reports)")
         lines.append("")
         for p in parsed_list:
             name = short_name(p["evaluation"])
-            summary = (p.get("llm_summary") or "").strip() or "*No summary.*"
+            summary = _summary_for(p)
             lines.append(f"### {name}")
             lines.append("")
             lines.append(summary)
@@ -930,6 +972,11 @@ def main() -> int:
             help="Add an LLM-generated narrative comparison (uses OPENAI_API_KEY or ANTHROPIC_API_KEY)",
         )
         parser.add_argument(
+            "--llm-summaries",
+            action="store_true",
+            help="Use LLM to generate a short summary per model from each report (more reliable than parsing section 5)",
+        )
+        parser.add_argument(
             "--provider",
             choices=("openai", "anthropic"),
             default="openai",
@@ -960,6 +1007,25 @@ def main() -> int:
                 m = len(parsed[-1].get("metrics") or [])
                 r = len(parsed[-1].get("rubrics") or [])
                 print(f"    -> {m} metrics, {r} rubrics, {len(parsed[-1].get('strengths') or [])} strengths, {len(parsed[-1].get('weaknesses') or [])} weaknesses", flush=True, file=sys.stderr)
+
+        # Optional: generate per-model summary via LLM (avoids parsing section 5 format)
+        if getattr(args, "llm_summaries", False):
+            model = getattr(args, "llm_model", "gpt-4o-mini")
+            if getattr(args, "provider", "openai") == "anthropic" and model == "gpt-4o-mini":
+                model = "claude-3-5-sonnet-20241022"
+            for i, path in enumerate(args.insight_files):
+                try:
+                    if verbose:
+                        print(f"  LLM summary ({i + 1}/{len(args.insight_files)}) {path.name} ...", flush=True, file=sys.stderr)
+                    text = path.read_text(encoding="utf-8")
+                    parsed[i]["generated_summary"] = fetch_llm_report_summary(
+                        text, args.provider, model
+                    )
+                except Exception as e:
+                    if verbose:
+                        print(f"    -> failed: {e}", flush=True, file=sys.stderr)
+                    # leave generated_summary unset; build_comparison_report will use parsed llm_summary or "No summary"
+
         llm_comparison = None
         if args.llm:
             model = args.llm_model
