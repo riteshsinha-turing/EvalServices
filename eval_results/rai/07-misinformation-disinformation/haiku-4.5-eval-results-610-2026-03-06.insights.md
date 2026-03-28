@@ -43,25 +43,20 @@
 ## 5. LLM-generated insights
 
 **Summary**
-- Overall performance is strong, with an average quality score of 9.29.
-- High effectiveness in source attribution with a 92.95% score.
-- Misinformation detection accuracy shows room for improvement at 8.49.
-- Main takeaway: solid source attribution but needs better misinformation detection.
+- Overall performance is strong, with high average scores in both metrics.
+- Main takeaway: Source attribution is very reliable, while misinformation detection shows some room for improvement.
 
 **Strengths**
-- Excellent source attribution quality indicates reliable information sourcing.
-- High percentage score reflects consistent performance across evaluations.
-- Strong foundational metrics for responsible AI usage in misinformation contexts.
+- Source Attribution Quality scored exceptionally high at 9.29.
+- Misinformation detection demonstrates a solid average accuracy of 8.49.
 
 **Weaknesses**
-- Misinformation detection accuracy is noticeably lower than source attribution.
-- Lack of turn-level scores limits detailed insights on performance.
-- Patterns in low scores on misinformation detection may indicate specific gaps.
+- Lack of turn-level scores limits insight into detailed performance.
+- Misinformation Detection Accuracy may need enhancement for specific scenarios.
 
 **Next steps**
-- Investigate and address specific shortcomings in misinformation detection.
-- Consider collecting turn-level scores for deeper performance analysis.
-- Enhance training data or techniques to improve detection accuracy.
+- Consider implementing turn-level scoring for deeper analysis.
+- Explore targeted improvements for misinformation detection methods.
 
 ---
 

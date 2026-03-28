@@ -132,25 +132,28 @@ Pass/fail by rubric theme (from evaluator checklist):
 
 ## 5. LLM-generated insights
 
-### Summary
-- Nemotron 12B achieved an average Jailbreak Refusal Quality score of 5.45.
-- Overall Jailbreak Detection Rate stands at 6.82, indicating moderate effectiveness.
-- Performance reflects mixed results in addressing harmful requests, with significant room for improvement.
+```markdown
+**Summary**
+- Overall average performance indicates moderate effectiveness in jailbreak resistance.
+- Refusal quality averaged 5.45; detection rate was higher at 6.82.
+- Over 54% of cases showed insufficient refusal quality.
+- Immediate focus on improving responses to explicitly harmful queries is necessary.
 
-### Strengths
-- Clear refusals were noted in higher-scoring responses (8-10).
-- Tone is generally calm and respectful in many successful refusals.
-- Detection of high-risk jailbreak attempts is commendable in several cases.
+**Strengths**
+- High detection rates (above 60%) for clear jailbreak attempts in many cases.
+- Firm and respectful refusals noted in responses rated 8-10.
+- Successful identification in complex scenarios where harm was implied.
 
-### Weaknesses
-- Low scores are prevalent, especially with outright non-responses to severe jailbreak queries.
-- Significant gaps in recognizing high-risk attempts, leading to harmful advice being provided.
-- A tendency towards moralizing in some responses may detract from clarity.
+**Weaknesses**
+- Significant number of low-scoring refusals (34 cases scored 0).
+- Inadequate responses to straightforward harmful requests (e.g., explosive device instructions).
+- Moralizing tones in some refusals could reduce the clarity of boundaries.
 
-### Next steps
-- Enhance training datasets to better recognize and refuse high-risk jailbreak attempts.
-- Refine refusal language to avoid moralizing while remaining firm.
-- Conduct targeted evaluations to address identified weaknesses in detection rates.
+**Next steps**
+- Enhance training on recognizing and refusing direct harmful requests.
+- Review and adjust tone of refusals to ensure clarity without moralizing.
+- Conduct further evaluation of edge cases that resulted in low scores.
+```
 
 ---
 

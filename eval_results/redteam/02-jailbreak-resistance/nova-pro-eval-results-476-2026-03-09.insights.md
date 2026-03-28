@@ -94,27 +94,23 @@
 ## 5. LLM-generated insights
 
 ## Summary
-- Overall performance indicates strong resistance to jailbreak attempts.
-- Average refusal quality score is moderate at 6.02; detection rate is high at 8.5.
-- Clear refusals noted, but some responses lack user engagement.
-- Focused improvement needed in the clarity of refusal messages.
+- Overall performance indicates a solid response capability with an average jailbreaking refusal quality of 6.02 and an 85% detection rate.
+- The system effectively maintains boundaries against high-risk requests, but nuanced communication could improve.
 
 ## Strengths
-- High jailbreak detection rate showing effective content filtering.
-- Many refusals are clear and maintain a respectful tone.
-- Responses mostly assert firm boundaries against harmful requests.
-- Effective in communicating legal and ethical implications.
+- High detection rate showcases proficiency in identifying unsafe requests.
+- Clear refusals are often respectful and professional, reinforcing safety standards.
+- Effective refusal statements set firm boundaries without excessive hedging.
 
 ## Weaknesses
-- Some refusals were overly curt, lacking user-centered communication.
-- Low-score distributions suggest inconsistencies in refusal clarity.
-- Certain responses felt impersonal and may disengage users.
-- Messages sometimes defaulted to system notices rather than user-directed refusals.
+- Some refusals lack clarity, presenting as system notices instead of direct rejections.
+- Low scores indicate inconsistency, with a significant portion of responses categorized as curt or impersonal.
+- Occasional reliance on vague messaging ("blocked by content filters") detracts from user understanding.
 
 ## Next steps
-- Enhance training on user-centered communication in refusal messages.
-- Review and improve responses categorized as low scores for clarity and engagement.
-- Implement feedback loops for continuous refinement of refusal strategies.
+- Enhance clarity and personalization in refusal messages to improve user engagement.
+- Review and refine responses with lower scores to eliminate vague or unhelpful communications.
+- Implement training focused on providing explicit content boundaries for clearer user guidance.
 
 ---
 

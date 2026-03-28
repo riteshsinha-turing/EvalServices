@@ -55,7 +55,7 @@ Aspect-level comparison derived from score justifications and rubric explanation
 
 | Model | Summary |
 |-------|---------|
-| Haiku 4.5 | Inferred from high score distribution and positive reasoning language. |
+| Haiku 4.5 | **clear and unambiguous** (frequent in high-scoring responses) \| **constructive alternative** (frequent in high-scoring responses) \| **regardless of how the request** (frequent in high-scoring responses) \| **unambiguous refusal** (frequent in high-scoring responses) |
 | Nemotron 12B | **constructive alternative** (frequent in high-scoring responses) \| **clear and unambiguous** (frequent in high-scoring responses) \| **firm boundary** (frequent in high-scoring responses) \| **unambiguous refusal** (frequent in high-scoring responses) |
 | Nova Pro | **clear and unambiguous** (frequent in high-scoring responses) \| **firm boundary** (frequent in high-scoring responses) \| **constructive alternative** (frequent in high-scoring responses) \| **professional and respectful** (frequent in high-scoring responses) |
 | Opus 4.5 | **clear and unambiguous** (frequent in high-scoring responses) \| **constructive alternative** (frequent in high-scoring responses) \| **unambiguous refusal** (frequent in high-scoring responses) \| **firm boundary** (frequent in high-scoring responses) |
@@ -64,7 +64,7 @@ Aspect-level comparison derived from score justifications and rubric explanation
 
 | Model | Summary |
 |-------|---------|
-| Haiku 4.5 | — |
+| Haiku 4.5 | **provided a** (appears in low-scoring responses) \| **did not refuse** (appears in low-scoring responses) \| **actionable guidance** (appears in low-scoring responses) \| **did not recognize** (appears in low-scoring responses) |
 | Nemotron 12B | **provided a** (appears in low-scoring responses) \| **did not refuse** (appears in low-scoring responses) \| **no actual refusal** (appears in low-scoring responses) \| **not a refusal** (appears in low-scoring responses) |
 | Nova Pro | **undermines** (appears in low-scoring responses) |
 | Opus 4.5 | **provided a** (appears in low-scoring responses) \| **did not refuse** (appears in low-scoring responses) \| **did not recognize** (appears in low-scoring responses) |
@@ -72,19 +72,19 @@ Aspect-level comparison derived from score justifications and rubric explanation
 ## LLM-generated comparison
 
 ### Comparison summary
-- **Haiku 4.5** ranks highest overall, followed by **Opus 4.5**, **Nova Pro**, and **Nemotron 12B**.
-- Main differences include Haiku's strong performance in Jailbreak Detection and Refusal Quality, whereas Nemotron shows significant weaknesses.
-- Haiku leads in multiple safety metrics and overall scores, making it the most reliable choice.
+- **Leading Model**: Haiku 4.5 ranks the highest overall with 8.96, showcasing excellent performance in refusal quality and detection rate.
+- **Main Difference**: Nemotron 12B significantly lags behind all other models, particularly in refusal quality and attack recognition.
+- **Opus 4.5 & Nova Pro**: Both exhibit strong performance but are notably lower than Haiku 4.5 in several metrics.
 
 ### Key differences
-- Haiku 4.5 excels in Jailbreak Detection Rate (9.42) and Safety Maintained (91.00), contrasting with Nemotron 12B's low scores in these areas (6.82 and 65.00, respectively).
-- Opus 4.5 shows notable strengths in Jailbreak Detection (9.21) but is still behind Haiku in Safety Maintained and No Harmful Content metrics.
-- Nova Pro performs moderately well but lacks in both Jailbreak Refusal Quality and Safety metrics compared to the top models.
+- **Refusal Quality**: Haiku 4.5 stands out with a refusal quality of 8.51, while Nemotron 12B is considerably weaker at 5.45.
+- **Jailbreak Detection Rates**: Haiku 4.5 and Opus 4.5 demonstrate high detection rates (9.42 and 9.21, respectively) compared to Nova Pro at 8.50 and Nemotron 12B at 6.82.
+- **Attack Recognition**: Significant gap in attack recognition, with Haiku 4.5 scoring 82.00, far above Nemotron 12B at 32.00.
 
 ### Recommendations
-- Prefer **Haiku 4.5** for applications prioritizing safety and robust defense against harmful requests.
-- Consider **Opus 4.5** for environments that can tolerate slightly lower safety scores but require strong detection capabilities.
-- Investigate further fine-tuning opportunities for **Nemotron 12B** to improve its significant gaps in safety and detection metrics.
+- **Choose Haiku 4.5** for projects prioritizing safety and robust refusal capabilities.
+- Consider **Opus 4.5** for implementations needing strong detection rates but with slightly less emphasis on refusal quality.
+- **Further evaluation** of Nemotron 12B is critical for improvements, particularly in refusal quality and harmful content management.
 
 ---
 
@@ -92,21 +92,28 @@ Aspect-level comparison derived from score justifications and rubric explanation
 
 ### Haiku 4.5
 
-*No summary.*
+- Overall performance is strong with an average score of 8.96 across refusal quality and detection rate metrics.  
+- Main strength lies in the model's clear and unambiguous refusal of harmful requests, maintaining a professional tone.  
+- Main weakness is the failure to recognize nuanced or disguised jailbreak attempts, leading to some harmful information being provided.
 
 ### Nemotron 12B
 
-- Nemotron 12B achieved an average Jailbreak Refusal Quality score of 5.45.
-- Overall Jailbreak Detection Rate stands at 6.82, indicating moderate effectiveness.
-- Performance reflects mixed results in addressing harmful requests, with significant room for improvement.
+- Overall performance shows moderate effectiveness with an average score of 6.13 for jailbreak resistance.  
+- Main strength lies in the ability to provide clear and unambiguous refusals in high-scoring scenarios.  
+- Major weakness identified is the failure to refuse in 34% of cases, particularly in explicit harmful requests.  
+- Important takeaway is the necessity for improvements in addressing straightforward jailbreak attempts effectively.
 
 ### Nova Pro
 
-*No summary.*
+- Overall performance shows solid response capability with an average refusal quality of 6.02 and an 85% detection rate, reflecting effective boundary maintenance against high-risk requests.  
+- The main strength lies in high detection rates and often respectful, clear refusals that effectively reinforce safety standards without excessive hedging.  
+- A key weakness is the clarity issue in some refusals, where responses appear as system notices ("blocked by content filters") rather than direct rejections, leading to potential user confusion.
 
 ### Opus 4.5
 
-*No summary.*
+- Overall performance is strong with an average score of 8.76, marking high effectiveness in jailbreak refusal and detection.  
+- Main strength lies in clear, professional refusals and a high detection rate of 92.1%, indicating robust awareness of harmful intents.  
+- Main weakness is the failure to recognize subtle or framed jailbreak attempts, leading to some enabling behavior in responses.
 
 ---
 
